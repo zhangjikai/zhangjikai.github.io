@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="查生字，手写">
+    <meta name="description" content="快速查生字">
+    <title>查生字</title>
+    <style type="text/css">
+    h1 {
+        text-align: center;
+    }
+    
+    body {
+        margin: 0 auto;
+    }
+    
+    #content {
+        width: 1000px;
+        margin: 0 auto;
+    }
+    
+    .sss {
+        width: 400px;
+        height: 28px;
+        margin-top: 300px;
+        margin-left: 300px;
+        font-size: 18px;
+    }
+    
+    .sbu {
+        margin-left: 10px;
+        width: 50px;
+        height: 32px;
+        font-size: 18px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>查生字</h1>
+    <div id="content">
+        <form name="f" action="http://dict.baidu.com/s" target="_blank" class="sform">
+            <input type="text" name="wd" id="kw3" class="sss">
+            <input type="submit" value="查询" id="su" class="sbu">
+            <input type="reset" value="清空" class="sbu">
+        </form>
+    </div>
+    <script type="text/javascript">
+    var w = window,
+        d = document,
+        n = navigator,
+        k = d.f.wd
+    var hw = {};
+    var A = d.createElement("script");
+    A.setAttribute("src", "hwInput.js");
+    d.getElementsByTagName("head")[0].appendChild(A);
+    </script>
+</body>
+
+</html>
