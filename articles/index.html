@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>文章收藏</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet"/>
+    <script src="../libs/jquery/jquery-1.11.2.min.js"></script>
+    <script>
+        $(function () {
+            $(".left_nav dd").hover(function () {
+                $(".nav_right", this).show();
+            });
+            $(".left_nav dd").mouseleave(function () {
+                $(".nav_right", this).hide();
+            });
+
+            $(".nav_right a").click(function () {
+                $(".nav_right").hide();
+            });
+
+        });
+    </script>
+
+    <style type="text/css">
+        body {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        #content {
+            width: 900px;
+            height: 500px;
+            margin: 0 auto;
+
+        }
+
+        #pageHeader {
+            width: 100%;
+            position: fixed;
+            height: 40px;
+            padding: 0;
+            top: 0px;
+            background-color: #145ccd;
+            border-bottom: 1px solid #e5e5e5
+        }
+
+        #right_panel {
+            width: 650px;
+            height: auto;
+            margin-top: 50px;
+            float: left;
+            margin-left: 220px;
+            border-left: 1px solid darkgray;
+        }
+
+        a.nav_left_1 {
+            width: 187px;
+            height: 29px;
+            line-height: 29px;
+            background: #ffffff;
+            padding-left: 13px;
+            display: block;
+            border-bottom: 1px dotted #aaa;
+            color: #3C4347;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        a.nav_left_1:hover {
+            background: #e6e6e6;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .sec {
+            margin-bottom: 20px;
+            margin-left: 30px;
+            width: 600px;
+            border-top: 1px dotted darkgray;
+        }
+
+        .sec h3 {
+            font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+            /* font-size: 26px; */
+            font-size: 24px;
+            padding-top: 80px;
+            margin-top: -70px;
+
+        }
+
+        .sec h4 {
+            font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+            font-size: 20px;
+            padding-top: 80px;
+            margin-top: -70px;
+        }
+
+        .sec ul {
+            list-style-type: disc;
+        }
+
+        .sec ul li {
+            margin-top: 5px;
+
+        }
+
+        .sec ul li a {
+            font-size: 16px;
+            margin: 2px;
+
+        }
+
+        .sec ul li a:hover {
+            text-decoration: underline;
+            color: blue;
+
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<header id="pageHeader">
+
+</header>
+<!--
+<div id="head">
+    <span>aa</span>
+</div>
+-->
+
+<div id="content">
+    <div class="left_nav">
+        <dl>
+            <dd><a href="javascript:" class="nav_left">软件设置</a>
+
+                <div class="nav_right">
+                    <a href="#soft_Intellij">Intellij</a>
+                </div>
+            </dd>
+            <dd><a href="#Ubuntu" class="nav_left_1">Ubuntu</a></dd>
+            <dd><a href="javascript:" class="nav_left">编程语言</a>
+                <div class="nav_right">
+                    <a href="#biancheng_c">C/C++</a>
+                </div>
+            </dd>
+
+            <dd><a href="#git" class="nav_left_1">Git</a></dd>
+            <dd><a href="#shengwu" class="nav_left_1">生物相关</a></dd>
+            <dd><a href="#bcjishu" class="nav_left_1">编程技术网站</a></dd>
+            <dd><a href="#onlinetool" class="nav_left_1">在线工具</a></dd>
+
+        </dl>
+    </div>
+
+    <div id="right_panel">
+
+        <div class="sec">
+            <h3 id="soft">软件设置</h3>
+            <h4 id="soft_Intellij">Intellij </h4>
+            <ul>
+                <li>
+                    <a href="http://blog.snsgou.com/post-730.html" target="_blank">PhpStorm快捷键设置/个性化设置，如何多项目共存？如何更换主题？</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sec">
+            <h3 id="Ubuntu">Ubuntu</h3>
+            <ul>
+                <li>
+                    <a href="http://my.oschina.net/eechen/blog/227134" target="_blank">Ubuntu 14.04 安装 Nvidia 私有驱动并在进行双显卡切换</a>
+                </li>
+
+                <li>
+                    <a href="http://jingyan.baidu.com/article/f3ad7d0ff8731609c3345b3b.html" target="_blank">Ubuntu14.4下 Sublime Text 3无法输入中文解决方法</a>
+                </li>
+
+                <li>
+                    <a href="http://burner1024.blog.163.com/blog/static/17447800420126191858424/" target="_blank">Ubuntu下非常给力的下载工具--uget+aria2</a>
+                </li>
+
+                <li>
+                    <a href="http://www.2cto.com/os/201408/328949.html" target="_blank">Ubuntu14.04忘记root密码的解决方法</a>
+                </li>
+
+                <li>
+                    <a href="http://www.cnblogs.com/onlycxue/archive/2013/07/23/3208352.html" target="_blank">Ubuntu: System program problem detected 解决方法</a>
+                </li>
+
+                <li>
+                    <a href="http://my.oschina.net/u/213051/blog/113137" target="_blank">Ubuntu12.04下Eclipse CDT代码悬浮提示窗口背景黑色的修改</a>
+                </li>
+
+                <li>
+                    <a href="http://www.kafan.cn/edu/40200021.html" target="_blank">解决Windows与Ubuntu双系统时间同步问题</a>
+                </li>
+
+                <li>
+                    <a href="http://www.vpser.net/manage/nano.html" target="_blank">nano编辑器使用教程</a>
+                </li>
+
+                <li>
+                    <a href="http://xzpeter.org/?p=432" target="_blank">在Ubuntu下使用Foxit Reader作为PDF阅读器</a>
+                </li>
+
+                <li>
+                    <a href="http://www.fwolf.com/blog/post/279" target="_blank">配置SSH自动登录</a>
+                </li>
+
+                <li>
+                    <a href="http://www.linuxidc.com/Linux/2014-07/104029.htm" target="_blank">Ubuntu 14.04 用户如何安装 Ubuntu Tweak 0.8.8（Ubuntu下的系统优化大师）</a>
+                </li>
+
+                <li>
+                    <a href="http://www.cnblogs.com/jesseZh/p/4036811.html" target="_blank">ubuntu 安装chmsee（chm阅读器）</a>
+                </li>
+
+                <li>
+                    <a href="http://blog.sina.com.cn/s/blog_64c238860100v9zz.html" target="_blank">ubuntu的chmsee中文乱码解决</a>
+                </li>
+
+                <li>
+                    <a href="http://blog.csdn.net/keyunq/article/details/7466202" target="_blank">ubuntu没有开启cron日志（重启服务时使用sudo）</a>
+                </li>
+
+                <li>
+                    <a href="http://blog.csdn.net/keyunq/article/details/7466202" target="_blank">Ubuntu 命令技巧</a>
+                </li>
+
+                <li>
+                    <a href="http://www.cnblogs.com/amboyna/archive/2009/01/24/1380675.html" target="_blank">ubuntu中安装字体雅黑和consolas</a>
+                </li>
+
+                <li>
+                    <a href="http://blog.chinaunix.net/uid-27004869-id-4236240.html" target="_blank">ubuntu 下创建eclipse桌面快捷方式</a>
+                </li>
+                <li>
+                    <a href="http://blog.chinaunix.net/uid-27037833-id-3431985.html" target="_blank">#!/bin/sh与#!/bin/bash的区别 </a>
+                </li>
+            </ul>
+
+
+        </div>
+
+        <div class="sec">
+            <h3 id="biancheng">编程语言</h3>
+            <h4 id="biancheng_c">C/C++ </h4>
+            <ul>
+                <li>
+                    <a href="http://blog.csdn.net/mr_jj_lian/article/details/6835137" target="_blank">linux之getopt 函数</a>
+                </li>
+
+                <li>
+                    <a href="http://book.2cto.com/201306/25342.html" target="_blank">__func__预定义标识符</a>
+                </li>
+
+                <li>
+                    <a href="http://blog.csdn.net/jackalfly/article/details/7531257" target="_blank">C++续行符(反斜杠 / )</a>
+                </li>
+
+                <li>
+                    <a href="http://blog.csdn.net/haoel/article/details/2880" target="_blank">用GDB调试程序（二）</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sec">
+            <h3 id="git">Git</h3>
+            <ul>
+                <li>
+                    <a href="http://blog.csdn.net/iefreer/article/details/7679631" target="_blank">Git:代码冲突常见解决方法</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sec">
+            <h3 id="shengwu">生物相关</h3>
+            <ul>
+                <li>
+                    <a href="http://jingyan.baidu.com/article/76a7e409b6c426fc3b6e15eb.html" target="_blank">如何从NCBI导出GBFF和FASTA格式序列</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sec">
+            <h3 id="bcjishu">编程技术网站</h3>
+            <ul>
+                <li>
+                    <a href="http://coolshell.cn/" target="_blank">酷壳</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sec">
+            <h3 id="onlinetool">在线工具</h3>
+            <ul>
+                <li>
+                    <a href="http://www.lrccon.com/convert.php#" target="_blank">歌词字幕在线转换器</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

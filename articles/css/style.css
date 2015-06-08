@@ -1,0 +1,115 @@
+@charset "utf-8";
+/* 代码整理：懒人之家 www.lanrenzhijia.com */
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    font-size: 14px;
+    text-align: left;
+    font-family:  "微软雅黑" , 'PT Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* 本案例代码begin */
+.left_nav {
+    width: 200px;
+    height: auto;
+    padding: 5px;
+    position: fixed;
+    top: 50px;
+    /*left: 50%;
+    top: 50%;
+    margin: -170px 0px 0px -650px;*/
+    z-index: 777;
+    background: #fff;
+    border-left: 1px solid #CDCDCD;
+}
+
+.left_nav dl dt {
+    width: 165px;
+    height: 22px;
+    line-height: 22px;
+    background: url(../images/long.png) no-repeat 12px center #E6238F;
+    padding-left: 35px;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.left_nav dl dd {
+    width: 208px;
+    height: 30px;
+    position: relative;
+}
+
+.left_nav dl dd .nav_right {
+    width: 300px;
+    height: auto;
+    overflow: hidden;
+    position: absolute;
+    left: 205px;
+    top: 0px;
+    padding: 0px 5px 10px 5px;
+    background: #fff;
+    display: none;
+    border: 1px solid #ccc;
+}
+
+.left_nav dl dd .nav_right a {
+    width: 110px;
+    height: 20px;
+    line-height: 20px;
+    text-align: left;
+    color: #666;
+    padding-left: 40px;
+    background: url(../images/nav_right_bg.png) no-repeat 20px center;
+    display: block;
+    float: left;
+    margin-top: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.left_nav dl dd .nav_right a:hover {
+    width: 110px;
+    height: 20px;
+    line-height: 20px;
+    text-align: left;
+    color: #000;
+    padding-left: 40px;
+    background: url(../images/nav_right_bg2.png) no-repeat 20px center #e6e6e6;
+    text-decoration: none;
+}
+
+.left_nav dl dd a.nav_left {
+    width: 187px;
+    height: 29px;
+    line-height: 29px;
+    background: url(../images/left_nav_dt_bg.png) no-repeat 185px center #ffffff;
+    padding-left: 13px;
+    display: block;
+    border-bottom: 1px dotted #aaa;
+    color: #3C4347;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.left_nav dl dd a.nav_left:hover {
+    background: url(../images/left_nav_dt_bg2.png) no-repeat 185px center #e6e6e6;
+    color: #fff;
+    text-decoration: none;
+}
