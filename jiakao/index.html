@@ -2,7 +2,38 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>科目三转头练习</title>
+    <style type="text/css">
+        #content {
+            width: 300px;
+            height: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #title {
+            width: 300px;
+            text-align: center;
+
+        }
+
+        #title h3 {
+            font-family: "Microsoft YaHei";
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        .buttons {
+            width: 300px;
+            float: left;
+        }
+
+        .buttons button {
+            width: 80px;
+            font-size: 16px;
+            font-family: "Microsoft YaHei";
+        }
+    </style>
 </head>
 <body>
 
@@ -14,8 +45,23 @@
 <audio src="sounds/06.mp3" id="m_5"></audio>
 
 
-<button onclick="start()">开始</button>
-<button onclick="stop()">停止</button>
+
+<div id="content">
+    <div id="title">
+        <h3 id="msg">练习结束</h3>
+    </div>
+
+    <div class="buttons">
+        <button onclick="start()">开始</button>
+        <button onclick="stop()">结束</button>
+    </div>
+
+    <div class="buttons" style="margin-top: 20px">
+        <a href="javascript:void(0)" onclick="labaPlay()"><img src="laba.jpg" width="100px"></a>
+    </div>
+
+</div>
+
 <script type="text/javascript">
 
     var arrs = new Array(5);
@@ -25,10 +71,14 @@
         arrs[i] = document.getElementById("m_" + i);
     }
 
-    document.onkeydown = function(e) {
-        if(e.which == 65) {
+    document.onkeydown = function (e) {
+        if (e.which == 65) {
             laba.play();
         }
+    }
+
+    function labaPlay() {
+        laba.play();
     }
 
     function rd(n, m) {
@@ -55,10 +105,12 @@
     function start() {
         count = 200;
         total = 200;
+        document.getElementById("msg").innerHTML="练习开始";
         loop();
     }
 
     function stop() {
+        document.getElementById("msg").innerHTML="练习结束";
         window.cancelAnimationFrame(requestId)
     }
 </script>
