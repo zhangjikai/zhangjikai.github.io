@@ -6,5 +6,61 @@
 </head>
 <body>
 
+<audio src="sounds/01.mp3" id="m_0"></audio>
+<audio src="sounds/02.mp3" id="m_1"></audio>
+<audio src="sounds/03.mp3" id="m_2"></audio>
+<audio src="sounds/04.mp3" id="m_3"></audio>
+<audio src="sounds/05.mp3" id="m_4"></audio>
+<audio src="sounds/06.mp3" id="m_5"></audio>
+
+
+<button onclick="start()">开始</button>
+<button onclick="stop()">停止</button>
+<script type="text/javascript">
+
+    var arrs = new Array(5);
+    var flag = false;
+    var laba = document.getElementById("m_5");
+    for (var i = 0; i < 5; i++) {
+        arrs[i] = document.getElementById("m_" + i);
+    }
+
+    document.onkeydown = function(e) {
+        if(e.which == 65) {
+            laba.play();
+        }
+    }
+
+    function rd(n, m) {
+        var c = m - n + 1;
+        return Math.floor(Math.random() * c + n);
+    }
+
+    var count = 200;
+    var total = 200;
+    var requestId;
+    function loop() {
+        count++;
+        if (count > total) {
+            var index = rd(0, 4);
+            arrs[index].play();
+            count = 0;
+            total = rd(180, 300);
+        }
+
+        requestId = requestAnimationFrame(loop);
+    }
+
+
+    function start() {
+        count = 200;
+        total = 200;
+        loop();
+    }
+
+    function stop() {
+        window.cancelAnimationFrame(requestId)
+    }
+</script>
 </body>
 </html>
