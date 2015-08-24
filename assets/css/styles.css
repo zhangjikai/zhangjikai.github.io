@@ -46,7 +46,7 @@ section, footer, nav{
 
 
 #colorNav > ul{
-	width: 300px; /* Increase when adding more menu items */
+	width: 400px; /* Increase when adding more menu items */
 	margin:0 auto;
 }
 
