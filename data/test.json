@@ -1,0 +1,21 @@
+
+{
+	"resultcode": "200",
+	"reason": "成功的返回 ",
+	"result": {
+		"phone_model": " iPhone 6  ",
+		"serial_number": "",
+		"imei_number": "359259061566229",
+		"active": "已激活",
+		"tele_support": "",
+		"tele_support_status": "已过期",
+		"warranty": "2016-04-03",
+		"warranty_status": "未过期",
+		"made_area": "",
+		"start_date": "",
+		"end_date": "",
+		"color": "灰色",
+		"size": "16GB"
+	},
+	"error_code": 0
+}
