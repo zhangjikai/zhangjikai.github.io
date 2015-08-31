@@ -2,117 +2,309 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>科目三转头练习</title>
+
+    <title>山东省驾考预约/成绩查询入口</title>
+    <meta name="description" content="山东省驾照考试预约以及成绩信息查询入口">
+    <meta name="keywords" content="驾考预约查询，驾考成绩查询">
     <style type="text/css">
+
+        .body {
+            background-color: #ffffff ;
+        }
         #content {
-            width: 300px;
-            height: 400px;
+            width: 800px;
+            height: 500px;
             margin: 0 auto;
-            text-align: center;
+            /* border: 1px solid red;*/
         }
 
         #title {
-            width: 300px;
+            width: 800px;
             text-align: center;
-
+            margin-bottom: 40px;
         }
 
         #title h3 {
             font-family: "Microsoft YaHei";
-            font-size: 18px;
             font-weight: normal;
         }
 
-        .buttons {
-            width: 300px;
+        #jiakao {
+            width: 800px;
             float: left;
+
         }
 
-        .buttons button {
-            width: 80px;
-            font-size: 16px;
-            font-family: "Microsoft YaHei";
+        .single {
+            width: 185px;
+            height: 80px;
+            float: left;
+            /* border: 1px dotted gray;*/
         }
+
+        .single .shi {
+            width: 145px;
+            float: left;
+            border-bottom: 1px dotted #508FD4;
+            border-left: 5px solid #508FD4;
+            text-align: left;
+            margin-bottom: 10px;
+            padding-bottom: 2px;
+            padding-left: 5px;
+        }
+
+        .single .shi h4 {
+            font-family: "Microsoft YaHei";
+            font-weight: normal;
+            margin: 0;
+            color: #508FD4;
+        }
+
+        .single .link {
+            float: left;
+            width: 70px;
+            padding-left: 5px;
+
+        }
+
+        .single .link a {
+            text-decoration: none;
+            color: #BB4E4E;
+            font-family: "Microsoft YaHei";
+            font-size: 16px;
+        }
+
+        .single .link a:hover {
+            /*text-decoration: underline;*/
+            color: red;
+        }
+
+        .right {
+            margin-right: 20px;
+        }
+
+
     </style>
+
+    <script type="text/javascript">
+        function _open(url) {
+            window.open(url + "?z=" + Date.parse(new Date()), "_blank");
+
+        }
+    </script>
 </head>
 <body>
 
-<audio src="sounds/01.mp3" id="m_0"></audio>
-<audio src="sounds/02.mp3" id="m_1"></audio>
-<audio src="sounds/03.mp3" id="m_2"></audio>
-<audio src="sounds/04.mp3" id="m_3"></audio>
-<audio src="sounds/05.mp3" id="m_4"></audio>
-<audio src="sounds/06.MP3" id="m_5"></audio>
-
-
-
 <div id="content">
     <div id="title">
-        <h3 id="msg">练习结束</h3>
+        <h3>山东省驾照考试预约及成绩信息查询</h3>
     </div>
+    <div id="jiakao">
+        <div class="single right">
+            <div class="shi">
+                <h4>济南市</h4>
+            </div>
+            <div class="link">
+                <a href="http://123.233.240.70:9080/jnwsyytest/ksyy/yycgcx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://123.233.240.70:9080/jnwsyytest/ksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
 
-    <div class="buttons">
-        <button onclick="start()">开始</button>
-        <button onclick="stop()">结束</button>
+        <div class="single right">
+            <div class="shi ">
+                <h4>青岛市</h4>
+            </div>
+            <div class="link">
+                <a href="http://cgs.qdpolice.gov.cn:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://cgs.qdpolice.gov.cn:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single right">
+            <div class="shi ">
+                <h4>淄博市</h4>
+            </div>
+            <div class="link">
+                <a href="javascript:void(0)" onclick="_open('http://222.134.129.34/trafficpolice/Yee/Yee_Query.aspx')">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="javascript:void(0)" onclick="_open('http://222.134.129.34/trafficpolice/Yee/Yee_Result.aspx')">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single">
+            <div class="shi ">
+                <h4>枣庄市</h4>
+            </div>
+            <div class="link">
+                <a href="http://218.59.228.162:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://218.59.228.162:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single right">
+            <div class="shi ">
+                <h4>东营市</h4>
+            </div>
+            <div class="link">
+                <a href="http://www.dygajj.gov.cn:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://www.dygajj.gov.cn:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single right">
+            <div class="shi ">
+                <h4>烟台市</h4>
+            </div>
+            <div class="link">
+                <a href="http://cgs.ytjj.gov.cn:9061/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://cgs.ytjj.gov.cn:9061/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single right">
+            <div class="shi ">
+                <h4>潍坊市</h4>
+            </div>
+            <div class="link">
+                <a href="http://119.191.61.214:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://119.191.61.214:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single">
+            <div class="shi ">
+                <h4>济宁市</h4>
+            </div>
+            <div class="link">
+                <a href="http://60.211.179.22:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://60.211.179.22:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single right">
+            <div class="shi ">
+                <h4>泰安市</h4>
+            </div>
+            <div class="link">
+                <a href="http://60.213.185.51:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://60.213.185.51:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single right">
+            <div class="shi ">
+                <h4>威海市</h4>
+            </div>
+            <div class="link">
+                <a href="http://221.2.145.164:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://221.2.145.164:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single right">
+            <div class="shi ">
+                <h4>日照市</h4>
+            </div>
+            <div class="link">
+                <a href="http://58.59.39.43:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://58.59.39.43:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single">
+            <div class="shi ">
+                <h4>滨州市</h4>
+            </div>
+            <div class="link">
+                <a href="http://222.134.43.251:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://222.134.43.251:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single right">
+            <div class="shi ">
+                <h4>德州市</h4>
+            </div>
+            <div class="link">
+                <a href="http://223.99.198.194:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://223.99.198.194:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single right">
+            <div class="shi ">
+                <h4>聊城市</h4>
+            </div>
+            <div class="link">
+                <a href="http://www.lcwscgs.com/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://www.lcwscgs.com/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single right">
+            <div class="shi ">
+                <h4>临沂市</h4>
+            </div>
+            <div class="link">
+                <a href="http://123.131.131.94:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://123.131.131.94:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single">
+            <div class="shi ">
+                <h4>菏泽市</h4>
+            </div>
+            <div class="link">
+                <a href="http://123.130.246.26:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://123.130.246.26:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
+        <div class="single">
+            <div class="shi ">
+                <h4>莱芜市</h4>
+            </div>
+            <div class="link">
+                <a href="http://222.134.200.57:9080/qsksyy/ksyycx.jsp" target="_blank">预约查询</a>
+            </div>
+            <div class="link">
+                <a href="http://222.134.200.57:9080/qsksyy/kscjcx.jsp" target="_blank">成绩查询</a>
+            </div>
+        </div>
+
     </div>
-
-    <div class="buttons" style="margin-top: 20px">
-        <a href="javascript:void(0)" onclick="labaPlay()"><img src="laba.jpg" width="100px"></a>
-    </div>
-
 </div>
-
-<script type="text/javascript">
-
-    var arrs = new Array(5);
-    var flag = false;
-    var laba = document.getElementById("m_5");
-    for (var i = 0; i < 5; i++) {
-        arrs[i] = document.getElementById("m_" + i);
-    }
-
-    document.onkeydown = function (e) {
-        if (e.which == 65) {
-            laba.play();
-        }
-    }
-
-    function labaPlay() {
-        laba.play();
-    }
-
-    function rd(n, m) {
-        var c = m - n + 1;
-        return Math.floor(Math.random() * c + n);
-    }
-
-    var count = 200;
-    var total = 200;
-    var requestId;
-    function loop() {
-        count++;
-        if (count > total) {
-            var index = rd(0, 4);
-            arrs[index].play();
-            count = 0;
-            total = rd(180, 300);
-        }
-
-        requestId = requestAnimationFrame(loop);
-    }
-
-
-    function start() {
-        count = 200;
-        total = 200;
-        document.getElementById("msg").innerHTML="练习开始";
-        loop();
-    }
-
-    function stop() {
-        document.getElementById("msg").innerHTML="练习结束";
-        window.cancelAnimationFrame(requestId)
-    }
-</script>
 </body>
 </html>
