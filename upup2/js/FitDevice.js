@@ -24,16 +24,37 @@ function judgePlatform() {
 
 }
 
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
 function initCanvasWH(canvas) {
-    var isPhone = judgePlatform();
+    var isPhone = isMobile.any();
     if (isPhone) {
         canvas.width = parseInt(window.innerWidth * 0.98);
         canvas.height = parseInt(window.innerHeight * 0.7);
-        
+        alert(canvas.height + " " + isPhone + " " + navigator.platform);
     } else {
         canvas.width = 300;
         canvas.height = 500;
     }
     
-    alert(canvas.height + " " + isPhone + " " + navigator.platform);
+    
 }
