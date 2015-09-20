@@ -50,7 +50,7 @@ function initCanvasWH(canvas) {
     if (isPhone) {
         canvas.width = parseInt(window.innerWidth * 0.98);
         canvas.height = parseInt(window.innerHeight * 0.7);
-        alert(canvas.height + " " + isPhone + " " + navigator.platform);
+        //alert(canvas.height + " " + isPhone + " " + navigator.platform);
     } else {
         canvas.width = 300;
         canvas.height = 500;
