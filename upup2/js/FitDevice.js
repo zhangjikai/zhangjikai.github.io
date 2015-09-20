@@ -35,5 +35,5 @@ function initCanvasWH(canvas) {
         canvas.height = 500;
     }
     
-    alert(canvas.height + " " + isPhone);
+    alert(canvas.height + " " + isPhone + " " + navigator.platform);
 }
