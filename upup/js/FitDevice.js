@@ -28,7 +28,7 @@ function initCanvasWH(canvas) {
     var isPhone = judgePlatform();
     if (isPhone) {
         canvas.width = parseInt(window.innerWidth * 0.98);
-        canvas.height = parseInt(window.innerHeight * 0.9);
+        canvas.height = parseInt(window.innerHeight - 80);
     } else {
         canvas.width = 300;
         canvas.height = 500;
