@@ -71,7 +71,7 @@ function drawScore() {
 
         context.fillStyle = "white";
         context.fillText("得分：" + totalScore, fx, fy);
-        maxScore = localStorage.getItem("maxScore");
+        maxScore = localStorage.getItem("coverMaxScore");
         if (maxScore !== null && maxScore !== undefined) {
             maxScore = parseInt(maxScore);
         } else {
@@ -149,7 +149,7 @@ function addScore() {
             context.fillText("得分：" + totalScore, fx, fy);
             if (totalScore > maxScore) {
                 maxScore = totalScore;
-                localStorage.setItem("maxScore", maxScore);
+                localStorage.setItem("coverMaxScore", maxScore);
             }
             context.fillText("最高：" + maxScore, fx2, fy2);
             return;
