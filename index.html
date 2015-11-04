@@ -1,63 +1,190 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="baidu-site-verification" content="QOvf0scIkl" />
-        <title>首页</title>
-        <!-- Our CSS stylesheet file -->
-        <link rel="stylesheet" href="assets/css/styles.css" />
-		<!-- Font Awesome Stylesheet -->
-		<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.css" />
-        <!--[if lt IE 9]>
-          <script src="assets/js/html5.js"></script>
-        <![endif]-->
-    </head>
-    
-    <body>
+<html lang="en">
 
-    	<nav id="colorNav">
-			<ul>
-				<li class="green">
-					<a href="#" class="icon-home"></a>
-					<ul>
-						<li><a href="#">首页</a></li>
-					</ul>
-				</li>
-				<li class="red">
-					<a href="#" class="icon-book"></a>
-					<ul>
-						<li><a href="http://blog.zhangjikai.tk">我的博客</a></li>
-						<li><a href="game/index.html">GAME</a></li>
+<head>
 
-                        <li><a href="articles/index.html">文章收藏</a></li>
-					</ul>
-				</li>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-                <li class="red">
-                    <a href="#" class="icon-tags"></a>
-                    <ul>
+    <title>首页</title>
 
-                        <li><a href="sz/index.html">查生字</a></li>
-                        <li><a href="text2sound/index.html">文字转语音</a></li>
-                        <li><a href="jiakao/index.html">山东省驾考预约及成绩查询</a></li>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-                    </ul>
-                </li>
+    <!-- Custom CSS -->
+    <link href="bootstrap/css/style.css" rel="stylesheet">
 
-				
-				<li class="purple">
-					<a href="#" class="icon-envelope"></a>
-					<ul>
-						<li><a href="https://github.com/zhangjikai">联系我</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
+    <style>
+        body {
+            font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+            background-color: #EBF5F3;
+        }
 
-        <footer>
-	        <h2><i></i> </h2>
-            <a class="tzine" href="#"></a>
-        </footer>
+        .navbar-custom {
+            /*color: #FFFFFF;*/
+            background-color: #56b9ab;
 
-    </body>
+        }
+
+        .navbar-brand,
+        .navbar-nav li a {
+            line-height: 55px;
+            height: 55px;
+            padding-top: 0px;
+            font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+
+        }
+
+        .navbar-default .navbar-nav > li > a {
+            color: #ffffff;
+        }
+
+        .navbar-default .navbar-nav > li > a:hover {
+            color: #175A94;
+        }
+
+        .page-header {
+            font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+            /* border-bottom: 1px solid #bbb;*/
+        }
+
+        hr {
+            border-bottom: 1px solid #bbb;
+        }
+
+        .img_border {
+            border: 1px solid #bbb;
+        }
+
+        .row a {
+            text-decoration: none;
+        }
+
+        .row a:hover {
+            text-decoration: none;
+        }
+
+        .addMaigin {
+            margin-bottom: 30px;
+        }
+
+
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-custom" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+            <img alt="zjk" src="bootstrap/images/logo.png" height="50">
+        </a>
+    </div>
+
+</div>
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header"></h2>
+        </div>
+        <div class="col-lg-4 col-sm-6 text-center addMaigin">
+            <a href="http://blog.zhangjikai.tk/" target="_blank">
+                <img class="img_border img-responsive img-center" src="bootstrap/images/blog.png" alt="">
+
+                <h3>我的博客</h3>
+
+                <p>使用hexo+github pages搭建，使用jacman主题</p>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center addMaigin">
+            <a href="http://zhangjikai.tk/game/searchx/index.html" target="_blank">
+                <img class=" img-responsive img-center img_border" src="bootstrap/images/searchx.png" alt="">
+
+                <h3>Html5小游戏-SearchX</h3>
+
+                <p>找到与众不同的那个立方体</p>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center addMaigin">
+            <a href="http://zhangjikai.tk/game/searchx/index.html" target="_blank">
+                <img class=" img-responsive img-center img_border" src="bootstrap/images/corverit.png" alt="">
+
+                <h3>Html5小游戏-CoverIt</h3>
+
+                <p>通过绿色按钮控制白块覆盖黄块</p>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center addMaigin">
+            <a href="http://zhangjikai.tk/sz/" target="_blank">
+                <img class="img_border img-responsive img-center" src="bootstrap/images/sz.jpg" alt="">
+
+                <h3>在线查生字</h3>
+
+                <p>手写输入，轻松查询生字</p>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center addMaigin">
+            <a href="http://zhangjikai.tk/text2sound/" target="_blank">
+                <img class="img_border img-responsive img-center" src="bootstrap/images/wy.jpg" alt="">
+
+                <h3>文字转换语音</h3>
+
+                <p>以百度翻译为基础，适合短文字转换，可调节语速</p>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center addMaigin">
+            <a href="http://zhangjikai.tk/jiakao" target="_blank">
+                <img class="img_border img-responsive img-center" src="bootstrap/images/jiakao.jpg" alt="">
+
+                <h3>山东省驾考预约及成绩信息查询</h3>
+
+                <p>将链接整理在一起，方便查询</p>
+            </a>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <p>Copyright &copy; zhangjk 2015</p>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </footer>
+
+</div>
+<!-- /.container -->
+
+<!-- jQuery -->
+<script src="bootstrap/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
 </html>
