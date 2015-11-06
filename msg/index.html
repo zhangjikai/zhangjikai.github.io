@@ -59,8 +59,10 @@
             border: 1px solid #bbb;
         }
 
-        .container {
-            width: 1000px;
+        @media screen and (min-width: 800px) {
+            .container {
+                width: 800px;
+            }
         }
 
         .row a {
@@ -75,8 +77,21 @@
             margin-bottom: 30px;
         }
 
+        .change_font {
+            font-size: 1.5em;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .button_width {
+            width: 6em;
+        }
+
 
     </style>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -102,18 +117,36 @@
 <!-- Page Content -->
 <div class="container">
     <div class="row">
-        <div style="padding:10px;">
+        <div style="padding:10px; min-height: 30em">
             <form class="bs-example bs-example-form" role="form">
                 <div class="col-lg-12">
                     <div class="input-group input-group-lg">
-                        <span class="input-group-addon">信息编号</span>
+                        <span class="input-group-addon">编号</span>
                         <input type="text" class="form-control">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">获取信息</button>
                            </span>
                     </div>
+                    <br>
+
+                    <div class="form-group ">
+                        <textarea class="form-control custom-control change_font" style="resize:none" rows="8" placeholder="请输入信息"></textarea>
+
+                    </div>
+                    <button type="button" class="btn btn-primary button_width">全选复制</button>
+                    <button type="button" class="btn btn-primary button_width"> 粘贴</button>
+                    <button type="button" class="btn btn-primary button_width">清空</button>
+
+                    <button type="button" class="btn btn-primary button_width right">保存</button>
+                    <div class="checkbox right ">
+                        <label>
+                            <input type="checkbox"> 阅后即焚&nbsp;&nbsp;
+                        </label>
+                    </div>
                     <!-- /input-group -->
                 </div>
+
+
                 <!-- /.col-lg-6 -->
             </form>
         </div>
@@ -132,11 +165,12 @@
 
     <hr>
 
+
     <!-- Footer -->
     <footer>
         <div class="row">
             <div class="col-lg-12 text-center">
-                <p>Copyright &copy; zhangjk 2015</p>
+                <p>Copyright &copy; zhangjk 2015 <input type="checkbox" id="checkb"></p>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -151,6 +185,45 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    var JPlaceHolder = {
+        //检测
+        _check: function () {
+            return 'placeholder' in document.createElement('input');
+        },
+        //初始化
+        init: function () {
+            if (!this._check()) {
+                this.fix();
+            }
+        },
+        //修复
+        fix: function () {
+            jQuery(':input[placeholder]').each(function (index, element) {
+                var self = $(this), txt = self.attr('placeholder');
+                self.wrap($('<div></div>').css({position: 'relative', zoom: '1', border: 'none', background: 'none', padding: 'none', margin: 'none'}));
+                var pos = self.position(), h = self.outerHeight(true), paddingleft = self.css('padding-left');
+                var holder = $('<span></span>').text(txt).css({position: 'absolute', left: pos.left, top: pos.top, height: h, lienHeight: h, paddingLeft: paddingleft, fontSize:'1.5em' , color: '#aaa'}).appendTo(self.parent());
+                self.focusin(function (e) {
+                    holder.hide();
+                }).focusout(function (e) {
+                    if (!self.val()) {
+                        holder.show();
+                    }
+                });
+                holder.click(function (e) {
+                    holder.hide();
+                    self.focus();
+                });
+            });
+        }
+    };
+    //执行
+    jQuery(function () {
+        JPlaceHolder.init();
+    });
+</script>
 
 </body>
 
