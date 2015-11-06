@@ -13,7 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../bootstrap/switch/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" >
+    <link href="../bootstrap/switch/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
     <!--<link href="../bootstrap/css/font-awesome.css" rel="stylesheet">
     <link href="css/build.css" rel="stylesheet">-->
 
@@ -84,11 +84,11 @@
         }
 
         .button_width {
-            width: 6em;
+            width: 4em;
         }
 
         .button_width2 {
-            width: 10em;
+            width: 4em;
         }
 
 
@@ -112,9 +112,7 @@
             <img alt="zjk" src="../bootstrap/images/logo.png" height="50">
         </a>
     </div>
-
 </div>
-
 
 <!-- Page Content -->
 <div class="container">
@@ -132,46 +130,27 @@
                     <br>
 
                     <div class="form-group ">
-                        <textarea class="form-control custom-control change_font" style="resize:none" rows="8" placeholder="请输入信息"></textarea>
+                        <textarea class="form-control custom-control change_font" style="resize:none" rows="8"
+                                  placeholder="请输入信息" id="mainText"></textarea>
 
                     </div>
 
                     <div class="text-center">
-                        <button type="button" class="btn btn-primary button_width">全选复制</button>
-                        <button type="button" class="btn btn-primary button_width"> 粘贴</button>
-                        <button type="button" class="btn btn-primary button_width">清空</button>
-                        <br/>
-                        <br/>
-                        <button type="button" class="btn btn-primary button_width2  ">保存</button>
-                        <div class="bootstrap-switch " >
-                            <input id="checkbox4" type="checkbox"  name="my" data-label-text="阅后即焚" data-on-text="是" data-off-text="否"	>
-                          <!--  <label for="checkbox4">阅后即焚</label>-->
+                        <!--<button type="button" class="btn btn-primary button_width" id="msgCopy">全选复制</button>
+                        <button type="button" class="btn btn-primary button_width" id="msgPaste"> 粘贴</button>-->
+                        <button type="button" class="btn btn-primary button_width" id="msgClear">清空</button>
+                        <!--<br/>
+                        <br/>-->
+                        <button type="button" class="btn btn-primary button_width2 " id="msgSave">保存</button>
+                        <div class="bootstrap-switch ">
+                            <input type="checkbox" name="onlyOne" data-label-text="阅后即焚" data-on-text="是"
+                                   data-off-text="否">
                         </div>
-
                     </div>
-
-
-                    <!--<div class="checkbox right">
-                        <label>
-                            <input type="checkbox" class="right"> 阅后即焚&nbsp;&nbsp;
-                        </label>
-                    </div>-->
-                    <!-- /input-group -->
                 </div>
 
-
-                <!-- /.col-lg-6 -->
             </form>
         </div>
-        <!--<div class="col-lg-4 col-sm-6 text-center addMaigin">
-            <a href="http://blog.zhangjikai.tk/" target="_blank">
-                <img class="img_border img-responsive img-center" src="bootstrap/images/blog.png" alt="">
-
-                <h3>我的博客</h3>
-
-                <p>使用hexo+github pages搭建，使用jacman主题</p>
-            </a>
-        </div>-->
 
 
     </div>
@@ -197,11 +176,31 @@
 
 <!-- jQuery -->
 <script src="../bootstrap/js/jquery.js" type="text/javascript"></script>
-
-<!-- Bootstrap Core JavaScript -->
 <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-
 <script src="../bootstrap/switch/js/bootstrap-switch.js"></script>
+
+<script type="text/javascript">
+    $("#msgCopy").click(function () {
+
+        /*var copyTextarea = document.querySelector('#mainText');
+        copyTextarea.select();
+
+        try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+            alert('Copying text command was ' + msg);
+        } catch (err) {
+            console.log('Oops, unable to copy');
+        }*/
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("[name='onlyOne']").bootstrapSwitch();
+    });
+</script>
 
 
 <script type="text/javascript">
@@ -243,7 +242,6 @@
     });
 
 
-    $("[name='my']").bootstrapSwitch();
 </script>
 
 
