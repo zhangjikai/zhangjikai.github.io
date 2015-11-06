@@ -124,7 +124,7 @@
                         <span class="input-group-addon">编号</span>
                         <input type="text" class="form-control">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">获取信息</button>
+                                <button class="btn btn-default" type="button" id="msgGet">获取信息</button>
                            </span>
                     </div>
                     <br>
@@ -144,7 +144,7 @@
                         <button type="button" class="btn btn-primary button_width2 " id="msgSave">保存</button>
                         <div class="bootstrap-switch ">
                             <input type="checkbox" name="onlyOne" data-label-text="阅后即焚" data-on-text="是"
-                                   data-off-text="否">
+                                   data-off-text="否" onSwitchChange="changeOne">
                         </div>
                     </div>
                 </div>
@@ -180,26 +180,52 @@
 <script src="../bootstrap/switch/js/bootstrap-switch.js"></script>
 
 <script type="text/javascript">
-    $("#msgCopy").click(function () {
-
-        /*var copyTextarea = document.querySelector('#mainText');
-        copyTextarea.select();
-
-        try {
-            var successful = document.execCommand('copy');
-            var msg = successful ? 'successful' : 'unsuccessful';
-            alert('Copying text command was ' + msg);
-        } catch (err) {
-            console.log('Oops, unable to copy');
-        }*/
-
+    var isOne = false;
+    $("#msgClear").click(function () {
+        $("#mainText").val("");
     });
+
+    $("#msgGet").click(function() {
+        console.log(11);
+        handleGet();
+    });
+
+    $("#msgSave").click(function() {
+        console.log(isOne);
+    });
+
+    function changeOne(event, change) {
+        isOne = !isOne;
+        console.log(11)
+    }
+
+    $(document).ready(function () {
+        $("[name='onlyOne']").bootstrapSwitch();
+        $('input[name="onlyOne"]').on('switchChange.bootstrapSwitch', function(event, state) {
+            isOne = state;
+        });
+    });
+
+    function handleGet() {
+        $.ajax({
+            url:'http://restuse.sinaapp.com/text/55',
+            type:'get',
+            async : false, //默认为true 异步
+            error:function(){
+                alert('error');
+            },
+            success:function(data){
+                console.log(data)
+            }
+        });
+    }
+
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("[name='onlyOne']").bootstrapSwitch();
-    });
+
+
+
 </script>
 
 
