@@ -122,9 +122,9 @@
                 <div class="col-lg-12">
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon">编号</span>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="textId">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">获取信息</button>
+                                <button class="btn btn-default" type="button" id="msgGet">获取信息</button>
                            </span>
                     </div>
                     <br>
@@ -144,7 +144,7 @@
                         <button type="button" class="btn btn-primary button_width2 " id="msgSave">保存</button>
                         <div class="bootstrap-switch ">
                             <input type="checkbox" name="onlyOne" data-label-text="阅后即焚" data-on-text="是"
-                                   data-off-text="否">
+                                   data-off-text="否" onSwitchChange="changeOne">
                         </div>
                     </div>
                 </div>
@@ -180,26 +180,81 @@
 <script src="../bootstrap/switch/js/bootstrap-switch.js"></script>
 
 <script type="text/javascript">
-    $("#msgCopy").click(function () {
-
-        /*var copyTextarea = document.querySelector('#mainText');
-        copyTextarea.select();
-
-        try {
-            var successful = document.execCommand('copy');
-            var msg = successful ? 'successful' : 'unsuccessful';
-            alert('Copying text command was ' + msg);
-        } catch (err) {
-            console.log('Oops, unable to copy');
-        }*/
-
+    var isOne = false;
+    $("#msgClear").click(function () {
+        $("#mainText").val("");
     });
+
+    $("#msgGet").click(function() {
+        console.log(11);
+        if($("#textId").val() == null || $("#textId").val()== "") {
+            alert("编号不能为空");
+            return;
+        }
+        handleGet();
+    });
+
+    $("#msgSave").click(function() {
+        console.log(isOne);
+        handlePost();
+    });
+
+    function changeOne(event, change) {
+        isOne = !isOne;
+        console.log(11)
+    }
+
+    $(document).ready(function () {
+        $("[name='onlyOne']").bootstrapSwitch();
+        $('input[name="onlyOne"]').on('switchChange.bootstrapSwitch', function(event, state) {
+            isOne = state;
+        });
+    });
+
+    function handleGet() {
+        $.ajax({
+            url:'http://restuse.sinaapp.com/text/' + $("#textId").val(),
+            type:'GET',
+            async : false, //默认为true 异步
+            dataType: 'JSON',
+            error:function(){
+                console.log("出错了");
+            },
+            success:function(data){
+                var obj = eval(data);
+                if(obj.data == "noResult") {
+                   alert("没有对应数据");
+                } else {
+                    $("#mainText").val(obj.data);
+                }
+
+            }
+        });
+    }
+
+    function handlePost() {
+        $.ajax({
+            url:'http://restuse.sinaapp.com/add',
+            type:'POST',
+            async : false, //默认为true 异步
+            dataType: 'JSON',
+            data:{msg: $("#mainText").val()},
+            error:function(){
+                console.log(11);
+            },
+            success:function(data){
+                var obj = eval(data);
+                $("#textId").val(obj.data);
+            }
+        });
+    }
+
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("[name='onlyOne']").bootstrapSwitch();
-    });
+
+
+
 </script>
 
 
