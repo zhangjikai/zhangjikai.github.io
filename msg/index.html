@@ -12,10 +12,10 @@
     <title>首页</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="bootstrap/css/style.css" rel="stylesheet">
+    <link href="../bootstrap/css/style.css" rel="stylesheet">
 
     <style>
         body {
@@ -59,6 +59,10 @@
             border: 1px solid #bbb;
         }
 
+        .container {
+            width: 1000px;
+        }
+
         .row a {
             text-decoration: none;
         }
@@ -88,7 +92,7 @@
 <div class="navbar navbar-default navbar-custom" role="navigation">
     <div class="navbar-header">
         <a class="navbar-brand" href="http://zhangjikai.tk/">
-            <img alt="zhangjk" src="bootstrap/images/logo.png" height="50">
+            <img alt="zjk" src="../bootstrap/images/logo.png" height="50">
         </a>
     </div>
 
@@ -98,10 +102,22 @@
 <!-- Page Content -->
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header"></h2>
+        <div style="padding:10px;">
+            <form class="bs-example bs-example-form" role="form">
+                <div class="col-lg-12">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon">信息编号</span>
+                        <input type="text" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">获取信息</button>
+                           </span>
+                    </div>
+                    <!-- /input-group -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </form>
         </div>
-        <div class="col-lg-4 col-sm-6 text-center addMaigin">
+        <!--<div class="col-lg-4 col-sm-6 text-center addMaigin">
             <a href="http://blog.zhangjikai.tk/" target="_blank">
                 <img class="img_border img-responsive img-center" src="bootstrap/images/blog.png" alt="">
 
@@ -109,57 +125,8 @@
 
                 <p>使用hexo+github pages搭建，使用jacman主题</p>
             </a>
-        </div>
+        </div>-->
 
-        <div class="col-lg-4 col-sm-6 text-center addMaigin">
-            <a href="http://zhangjikai.tk/game/searchx/index.html" target="_blank">
-                <img class=" img-responsive img-center img_border" src="bootstrap/images/searchx.png" alt="">
-
-                <h3>Html5小游戏-SearchX</h3>
-
-                <p>找到与众不同的那个立方体</p>
-            </a>
-        </div>
-
-        <div class="col-lg-4 col-sm-6 text-center addMaigin">
-            <a href="http://zhangjikai.tk/game/coverit/index.html" target="_blank">
-                <img class=" img-responsive img-center img_border" src="bootstrap/images/corverit.png" alt="">
-
-                <h3>Html5小游戏-CoverIt</h3>
-
-                <p>通过绿色按钮控制白块覆盖黄块</p>
-            </a>
-        </div>
-
-        <div class="col-lg-4 col-sm-6 text-center addMaigin">
-            <a href="http://zhangjikai.tk/sz/" target="_blank">
-                <img class="img_border img-responsive img-center" src="bootstrap/images/sz.jpg" alt="">
-
-                <h3>在线查生字</h3>
-
-                <p>手写输入，轻松查询生字</p>
-            </a>
-        </div>
-
-        <div class="col-lg-4 col-sm-6 text-center addMaigin">
-            <a href="http://zhangjikai.tk/text2sound/" target="_blank">
-                <img class="img_border img-responsive img-center" src="bootstrap/images/wy.jpg" alt="">
-
-                <h3>文字转换语音</h3>
-
-                <p>以百度翻译为基础，适合短文字转换，可调节语速</p>
-            </a>
-        </div>
-
-        <div class="col-lg-4 col-sm-6 text-center addMaigin">
-            <a href="http://zhangjikai.tk/jiakao" target="_blank">
-                <img class="img_border img-responsive img-center" src="bootstrap/images/jiakao.jpg" alt="">
-
-                <h3>山东省驾考预约及成绩信息查询</h3>
-
-                <p>将链接整理在一起，方便查询</p>
-            </a>
-        </div>
 
     </div>
 
@@ -180,10 +147,10 @@
 <!-- /.container -->
 
 <!-- jQuery -->
-<script src="bootstrap/js/jquery.js"></script>
+<script src="../bootstrap/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 
