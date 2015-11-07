@@ -86,10 +86,11 @@
 			'id'        : 'toaster',
 			'container' : 'body',
 			'template'  : '<div></div>',
-			'class'     : 'toaster my_toaster',
+			'class'     : 'toaster center_toaster',
 			'css'       :
 			{
 				'position' : 'fixed',
+                'top' :'2px',
 				/*'top'      : '10px',
 				'right'    : '45%',
 				'width'    : '200px',*/
@@ -143,7 +144,7 @@
 		},
 
 		'debug'        : false,
-		'timeout'      : 1500,
+		'timeout'      : 2000,
 		'stylesheet'   : null,
 		'donotdismiss' : []
 	};
