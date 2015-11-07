@@ -218,9 +218,9 @@
 
 <script type="text/javascript">
     var isOne = false;
-    var getUrl = "http://restuse.sinaapp.com/text/";
-    var addUrl = "http://restuse.sinaapp.com/add";
-    var addOneUrl = "http://restuse.sinaapp.com/one";
+    var getUrl = "http://data.zhangjikai.tk/text/";
+    var addUrl = "http://data.zhangjikai.tk/add";
+    var addOneUrl = "http://data.zhangjikai.tk/one";
     var postUrl = addUrl;
 
     $("#msgClear").click(function () {
@@ -238,6 +238,8 @@
                 return;
             }
         }
+        waitingDialog.show();
+        console.log(11);
         handleGet();
     });
 
@@ -268,15 +270,13 @@
     });
 
     function handleGet() {
-        jQuery.support.cors = true;
-        waitingDialog.show();
+
         $.ajax({
             url: getUrl + $("#textId").val(),
             type: 'GET',
-            async: false, //默认为true 异步
+            async: true, //默认为true 异步
             dataType: 'JSON',
             error: function (data) {
-                console.log(data);
                 setTimeout(function () {
                     waitingDialog.hide();
                     if ($.support.leadingWhitespace) {
@@ -308,7 +308,6 @@
     }
 
     function handlePost() {
-        $.support.cors = true;
         waitingDialog.show();
         if (isOne) {
             postUrl = addOneUrl;
@@ -318,7 +317,7 @@
         $.ajax({
             url: postUrl,
             type: 'POST',
-            async: false, //默认为true 异步
+            async: true, //默认为true 异步
             dataType: 'JSON',
             data: {msg: $("#mainText").val()},
             error: function () {
