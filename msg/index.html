@@ -3,7 +3,8 @@
 
 <head>
 
-    <meta charset="utf-8">
+    <!--<meta charset="utf-8">-->
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -209,6 +210,7 @@
 
 <!-- jQuery -->
 <script src="../bootstrap/js/jquery.js" type="text/javascript"></script>
+
 <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../bootstrap/switch/js/bootstrap-switch.js" type="text/javascript"></script>
 <script src="../bootstrap/js/bootstrap-waitingfor.js" type="text/javascript"></script>
@@ -221,18 +223,14 @@
     var addOneUrl = "http://restuse.sinaapp.com/one";
     var postUrl = addUrl;
 
-
-
     $("#msgClear").click(function () {
         $("#mainText").val("");
 
     });
 
     $("#msgGet").click(function () {
-        /*console.log(11);*/
         if ($("#textId").val() == null || $("#textId").val() == "") {
             if ($.support.leadingWhitespace) {
-
                 $.toaster({ priority: 'warning', title: '警告', message: '编号不能为空'});
                 return;
             } else {
@@ -270,38 +268,47 @@
     });
 
     function handleGet() {
+        jQuery.support.cors = true;
         waitingDialog.show();
         $.ajax({
             url: getUrl + $("#textId").val(),
             type: 'GET',
             async: false, //默认为true 异步
             dataType: 'JSON',
-            error: function () {
-                waitingDialog.hide();
-                if ($.support.leadingWhitespace) {
-                    $.toaster({ priority: 'danger', title: '错误', message: '系统错误，请稍后重试'})
-                } else {
-                    alert("错误：系统错误，请稍后重试");
-                }
+            error: function (data) {
+                console.log(data);
+                setTimeout(function () {
+                    waitingDialog.hide();
+                    if ($.support.leadingWhitespace) {
+                        $.toaster({ priority: 'danger', title: '错误', message: '系统错误，请稍后重试'})
+                    } else {
+                        alert("错误：系统错误，请稍后重试");
+                    }
+                }, 300);
+
             },
             success: function (data) {
-                waitingDialog.hide();
-                var obj = eval(data);
-                if (obj.data == "noResult") {
-                    $("#mainText").val('');
-                    if ($.support.leadingWhitespace) {
-                        $.toaster({ priority: 'info', title: '信息', message: '没有对应数据'})
+                setTimeout(function () {
+                    waitingDialog.hide();
+                    var obj = eval(data);
+                    if (obj.data == "noResult") {
+                        $("#mainText").val('');
+                        if ($.support.leadingWhitespace) {
+                            $.toaster({ priority: 'info', title: '信息', message: '没有对应数据'})
+                        } else {
+                            alert("信息：没有对应数据");
+                        }
                     } else {
-                        alert("信息：没有对应数据");
+                        $("#mainText").val(obj.data);
                     }
-                } else {
-                    $("#mainText").val(obj.data);
-                }
+                }, 300);
+
             }
         });
     }
 
     function handlePost() {
+        $.support.cors = true;
         waitingDialog.show();
         if (isOne) {
             postUrl = addOneUrl;
@@ -315,25 +322,32 @@
             dataType: 'JSON',
             data: {msg: $("#mainText").val()},
             error: function () {
-                waitingDialog.hide();
-                if ($.support.leadingWhitespace) {
-                    $.toaster({ priority: 'danger', title: '错误', message: '系统错误，请稍后重试'})
-                } else {
-                    alert("错误：系统错误，请稍后重试");
-                }
-            },
-            success: function (data) {
-                waitingDialog.hide();
-                var obj = eval(data);
-                if (obj.data == "-1") {
+                setTimeout(function () {
+                    waitingDialog.hide();
                     if ($.support.leadingWhitespace) {
                         $.toaster({ priority: 'danger', title: '错误', message: '系统错误，请稍后重试'})
                     } else {
                         alert("错误：系统错误，请稍后重试");
                     }
-                } else {
-                    $("#textId").val(obj.data);
-                }
+                }, 300);
+
+
+            },
+            success: function (data) {
+                setTimeout(function () {
+                    waitingDialog.hide();
+                    var obj = eval(data);
+                    if (obj.data == "-1") {
+                        if ($.support.leadingWhitespace) {
+                            $.toaster({ priority: 'danger', title: '错误', message: '系统错误，请稍后重试'})
+                        } else {
+                            alert("错误：系统错误，请稍后重试");
+                        }
+                    } else {
+                        $("#textId").val(obj.data);
+                    }
+                }, 300);
+
 
             }
         });
