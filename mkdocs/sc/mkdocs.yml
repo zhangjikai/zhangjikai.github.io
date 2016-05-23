@@ -1,0 +1,4 @@
+site_name: 网站收藏
+pages:
+- 首页 : index.md
+theme: cerulean
