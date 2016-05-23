@@ -1,0 +1,22 @@
+{
+  "name": "mplayer",
+  "authors": [
+    "zhangjikai <zhangjk1993@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "pure": "^0.6.0",
+    "jPlayer": "jplayer#^2.9.2"
+  }
+}
