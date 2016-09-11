@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title></title>
+    <link href="css/mobi.css" rel="stylesheet">
+    <style type="text/css">
+        textarea {
+            //border: 0;
+            background-color: transparent;
+
+            color: #666464;
+            width: 100%;
+            height: 100px;
+            font-size: 14px;
+            font-family: "Microsoft Yahei";
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="flex-center">
+    <div class="container">
+
+        <div class="form" id="">
+            <div id="url_content">
+                <div class="row mt-15 link">
+                    <div class="col-1-2">
+                        <input type="text" placeholder="URL">
+                    </div>
+                    <div class="col-1-2">
+                        <input type="text" placeholder="Name">
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="row mt-15">
+            <div class="col-1-4">
+                <button  onclick="add();" class="btn">添加</button>
+            </div>
+            <div class="col-1-4">
+                <button  onclick="generate();" class="btn">生成</button>
+            </div>
+        </div>
+
+        <div class="row mt-15">
+            <textarea id="link_text"></textarea>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<script type="text/javascript">
+    var urlContent = $("#url_content");
+
+    //console.log(urlContent);
+
+    function add() {
+        var rowObj = $("<div />", {
+            "class": "row mt-15 link"
+        }).appendTo(urlContent);
+
+        var placeText = ["URL", "Name"];
+        for (var i = 0; i < 2; i++) {
+            var divObj = $("<div />", {
+                "class": "col-1-2"
+            }).appendTo(rowObj);
+            $("<input />", {
+                "type": "text",
+                "placeholder": placeText[i]
+            }).appendTo(divObj);
+        }
+    }
+
+    function generate() {
+        var links = $(".link input");
+        //console.log(links);
+        var str= "";
+        for(var i = 0; i < links.length; i+=2) {
+            //console.log(links[i].value)
+            str +=  "<a href = \"" + links[i].value + " \" target=\"_blank\" >" + links[i+1].value + "</a>";
+            str += "\n";
+        }
+        $("#link_text").val(str);
+    }
+</script>
+</body>
+</html>
