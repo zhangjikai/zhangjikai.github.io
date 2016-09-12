@@ -42,6 +42,7 @@
     var textNum = 5;
     var textArr = ["中", "秋", "节", "快", "乐"];
     var circleArr = [];
+    var catchCircleArr = [];
     /* var canvas = document.getElementById("canvas");
      var context = canvas.getContext("2d");
      var txt = "hahaha";
@@ -54,6 +55,9 @@
      ctx.font="30px Arial";
      ctx.fillText("Hello World",10,50);*/
 
+   /* Array.prototype.remove = function(obj) {
+        if()
+    }*/
     window.requestAnimationFrame = (function () {
         return window.requestAnimationFrame ||
                 window.webkitRequestAnimationFrame ||
@@ -64,6 +68,13 @@
                     window.setTimeout(callback, 1000 / 60);
                 };
     })();
+
+    function arrayRemove(array, element) {
+        var i = array.indexOf(element);
+        if(i != -1) {
+            array.splice(i, 1);
+        }
+    }
 
     var isMobile = {
         Android: function () {
@@ -101,15 +112,18 @@
     }
 
     var snake = {};
-    snake.CircleObj = function (radius, text, context) {
+    snake.CircleObj = function (radius, text, isFill, index, context) {
         console.log(width);
         this.x = parseInt(Math.random() * width);
         this.y = parseInt(Math.random() * height);
         this.radius = radius;
         this.text = text;
         this.context = context;
-        this.xSpeed = Math.random() * 1;
-        this.ySpeed = Math.random() * 1 ;
+        this.isFill = isFill;
+        this.index = index;
+        this.xSpeed = Math.random() / 2 + 0.3;
+        this.ySpeed = Math.random() / 2 + 0.3;
+
         if (this.x < this.radius) {
             this.x += this.radius;
         }
@@ -138,13 +152,12 @@
         },
 
         draw: function () {
-            drawCircle(this.x, this.y, this.radius, this.text, this.context);
-
+            drawCircle(this.x, this.y, this.radius, this.text, this.isFill, this.context);
         }
     };
 
 
-    function checkCollusion(circle, circle2) {
+    function checkCollusion(circle, circle2, isSame) {
         var x1 = circle.x;
         var x2 = circle2.x;
         var y1 = circle.y;
@@ -152,17 +165,28 @@
         var total = Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2);
         var total2 = Math.pow(circle.radius + circle2.radius, 2);
         if (total < total2) {
-            circle.xSpeed = -circle.xSpeed;
-            circle.ySpeed = -circle.ySpeed;
-            circle2.xSpeed = -circle2.xSpeed;
-            circle2.ySpeed = -circle2.ySpeed;
+            if (isSame) {
+                circle.xSpeed = -circle.xSpeed;
+                circle.ySpeed = -circle.ySpeed;
+                circle2.xSpeed = -circle2.xSpeed;
+                circle2.ySpeed = -circle2.ySpeed;
+            } else {
+                return true;
+            }
         }
     }
 
-    function drawCircle(x, y, radius, text, context) {
+
+    function drawCircle(x, y, radius, text, isFill, context) {
         context.beginPath();
         context.arc(x, y, radius, 0, 2 * Math.PI, false);
         context.strokeStyle = borderColor;
+        context.fillStyle = '#000';
+        if (isFill) {
+            context.fillStyle = '#8c9296';
+            context.strokeStyle = '#8c9296';
+            context.fill();
+        }
         /*context.fillStyle = 'green';
          context.fill();
          context.lineWidth = 5;
@@ -180,18 +204,29 @@
     function draw() {
 
         //if (countIndex++ > 4) {
-            context.clearRect(0, 0, width, height);
-            for (var i = 0; i < circleNum; i++) {
-                for(var j = 0; j < i; j++) {
-                    checkCollusion(circleArr[i], circleArr[j]);
-                }
-                var circle = circleArr[i];
-                console.log(circle);
-                console.log(circleArr)
-                circle.move();
-                circle.draw();
+        context.clearRect(0, 0, width, height);
+        for (var i = 0; i < circleArr.length; i++) {
+            for (var j = 0; j < i; j++) {
+                checkCollusion(circleArr[i], circleArr[j], true);
             }
-            countIndex = 0;
+            var circle = circleArr[i];
+            //console.log(circle);
+            //console.log(circleArr)
+            circle.move();
+            circle.draw();
+        }
+
+        for (var i = 0; i < catchCircleArr.length; i++) {
+            for (var j = 0; j < circleArr.length; j++) {
+                if(checkCollusion(catchCircleArr[i], circleArr[j], false)) {
+                    arrayRemove(circleArr, circleArr[j]);
+                }
+            }
+            var circle = catchCircleArr[i];
+            circle.move();
+            circle.draw();
+        }
+        countIndex = 0;
         //}
     }
     function animate() {
@@ -201,10 +236,11 @@
 
     function initCircle() {
         for (var i = 0; i < 5; i++) {
-            var circle = new snake.CircleObj(21, textArr[i % 5], context);
+            var circle = new snake.CircleObj(21, textArr[i % 5], false, i + 1, context);
             circleArr.push(circle);
-
         }
+        var circle = new snake.CircleObj(21, "", true, 0, context);
+        catchCircleArr.push(circle);
     }
 
 
