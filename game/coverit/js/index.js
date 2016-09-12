@@ -366,7 +366,7 @@ function touchUp(event) {
     }
 }
 
-window.requestAnimFrame = (function () {
+window.requestAnimationFrame = (function () {
     return window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame ||

@@ -17,6 +17,7 @@
 
     .container {
         background: transparent;
+        font-family: "microsoft yahei";
     }
 </style>
 </head>
@@ -30,6 +31,17 @@
 
 
 <script type="text/javascript">
+    var borderColor = "#003300";
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+    var animateId;
+    var countIndex = 0;
+    var width;
+    var height;
+    var circleNum = 5;
+    var textNum = 5;
+    var textArr = ["‰∏≠", "Áßã", "ËäÇ", "Âø´", "‰πê"];
+    var circleArr = [];
     /* var canvas = document.getElementById("canvas");
      var context = canvas.getContext("2d");
      var txt = "hahaha";
@@ -41,6 +53,17 @@
      var ctx=c.getContext("2d");
      ctx.font="30px Arial";
      ctx.fillText("Hello World",10,50);*/
+
+    window.requestAnimationFrame = (function () {
+        return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+    })();
 
     var isMobile = {
         Android: function () {
@@ -66,21 +89,131 @@
     function initCanvasWH(canv) {
         var isPhone = isMobile.any();
         if (isPhone) {
-            //»Áπ˚ « ÷ª˙∑√Œ £¨Ω´canvas¥Û–°…ËŒ™Õ¯“≥ø…º˚µƒ¥Û–°£¨≥À“‘0.96 «Œ™¡ÀÀƒ±ﬂ¡Ù–©ø’œ∂
             canv.width = parseInt(window.innerWidth * 0.96);
             canv.height = parseInt(window.innerHeight * 0.96);
         } else {
             canv.width = 500;
             canv.height = 500;
         }
+        width = canv.width;
+        console.log(canv.width);
+        height = canv.height;
+    }
+
+    var snake = {};
+    snake.CircleObj = function (radius, text, context) {
+        console.log(width);
+        this.x = parseInt(Math.random() * width);
+        this.y = parseInt(Math.random() * height);
+        this.radius = radius;
+        this.text = text;
+        this.context = context;
+        this.xSpeed = Math.random() * 1;
+        this.ySpeed = Math.random() * 1 ;
+        if (this.x < this.radius) {
+            this.x += this.radius;
+        }
+        if (this.x > width - this.radius) {
+            this.x -= this.radius;
+        }
+        if (this.y < this.radius) {
+            this.y += this.radius;
+        }
+        if (this.y > height - this.radius) {
+            this.y -= this.radius;
+        }
+    };
+
+    snake.CircleObj.prototype = {
+        move: function () {
+            this.x += this.xSpeed;
+            this.y += this.ySpeed;
+            if (this.x < this.radius || this.x > width - this.radius) {
+                this.xSpeed = -this.xSpeed;
+            }
+            if (this.y < this.radius || this.y > height - this.radius) {
+                this.ySpeed = -this.ySpeed;
+            }
+
+        },
+
+        draw: function () {
+            drawCircle(this.x, this.y, this.radius, this.text, this.context);
+
+        }
+    };
+
+
+    function checkCollusion(circle, circle2) {
+        var x1 = circle.x;
+        var x2 = circle2.x;
+        var y1 = circle.y;
+        var y2 = circle2.y;
+        var total = Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2);
+        var total2 = Math.pow(circle.radius + circle2.radius, 2);
+        if (total < total2) {
+            circle.xSpeed = -circle.xSpeed;
+            circle.ySpeed = -circle.ySpeed;
+            circle2.xSpeed = -circle2.xSpeed;
+            circle2.ySpeed = -circle2.ySpeed;
+        }
+    }
+
+    function drawCircle(x, y, radius, text, context) {
+        context.beginPath();
+        context.arc(x, y, radius, 0, 2 * Math.PI, false);
+        context.strokeStyle = borderColor;
+        /*context.fillStyle = 'green';
+         context.fill();
+         context.lineWidth = 5;
+         context.strokeStyle = '#003300';*/
+        context.stroke();
+
+        context.font = radius + "px 'microsoft yahei'";
+        var textWidth = context.measureText(text).width;
+        //context.textAlign = 'center';
+
+        context.fillText(text, x - textWidth / 2, y + radius / 3);
     }
 
 
-    function drawGrid() {
+    function draw() {
 
+        //if (countIndex++ > 4) {
+            context.clearRect(0, 0, width, height);
+            for (var i = 0; i < circleNum; i++) {
+                for(var j = 0; j < i; j++) {
+                    checkCollusion(circleArr[i], circleArr[j]);
+                }
+                var circle = circleArr[i];
+                console.log(circle);
+                console.log(circleArr)
+                circle.move();
+                circle.draw();
+            }
+            countIndex = 0;
+        //}
     }
-    var canvas = document.getElementById("canvas");
+    function animate() {
+        animateId = requestAnimationFrame(animate);
+        draw();
+    }
+
+    function initCircle() {
+        for (var i = 0; i < 5; i++) {
+            var circle = new snake.CircleObj(21, textArr[i % 5], context);
+            circleArr.push(circle);
+
+        }
+    }
+
+
     initCanvasWH(canvas);
+    initCircle();
+    animate();
+    //drawCircle(i * 30, i * 30, 20, textArr[i], context);
+    //drawCircle(30, 30, 20, "‰∏≠", context);
+    //drawCircle(50, 50, 20, "Áßã", context);
 
 
 </script>
