@@ -43,6 +43,10 @@
     var textArr = ["中", "秋", "节", "快", "乐"];
     var circleArr = [];
     var catchCircleArr = [];
+    var catchCircleIndex = 0;
+    var positions = [];
+    var randomIndexs = [];
+    var radius = 20;
     /* var canvas = document.getElementById("canvas");
      var context = canvas.getContext("2d");
      var txt = "hahaha";
@@ -55,9 +59,9 @@
      ctx.font="30px Arial";
      ctx.fillText("Hello World",10,50);*/
 
-   /* Array.prototype.remove = function(obj) {
-        if()
-    }*/
+    /* Array.prototype.remove = function(obj) {
+     if()
+     }*/
     window.requestAnimationFrame = (function () {
         return window.requestAnimationFrame ||
                 window.webkitRequestAnimationFrame ||
@@ -71,7 +75,7 @@
 
     function arrayRemove(array, element) {
         var i = array.indexOf(element);
-        if(i != -1) {
+        if (i != -1) {
             array.splice(i, 1);
         }
     }
@@ -112,10 +116,14 @@
     }
 
     var snake = {};
-    snake.CircleObj = function (radius, text, isFill, index, context) {
-        console.log(width);
-        this.x = parseInt(Math.random() * width);
-        this.y = parseInt(Math.random() * height);
+    snake.CircleObj = function (position, radius, text, isFill, index, context) {
+        //console.log(width);
+        //this.x = parseInt(Math.random() * width);
+        //this.y = parseInt(Math.random() * height);
+        this.x = position.x;
+        this.y = position.y;
+        this.lastX = this.x;
+        this.lastY = this.y;
         this.radius = radius;
         this.text = text;
         this.context = context;
@@ -142,12 +150,57 @@
         move: function () {
             this.x += this.xSpeed;
             this.y += this.ySpeed;
-            if (this.x < this.radius || this.x > width - this.radius) {
-                this.xSpeed = -this.xSpeed;
+            /*if (this.x < this.radius) {
+             this.x += this.radius;
+             this.xSpeed = -this.xSpeed;
+             }
+             if (this.x > width - this.radius) {
+             this.x -= this.radius;
+             this.xSpeed = -this.xSpeed;
+             }
+             if (this.y < this.radius) {
+             this.y += this.radius;
+             this.ySpeed = -this.ySpeed;
+             }
+             if (this.y > width - this.ySpeed) {
+             this.y -= this.radius;
+             this.ySpeed = -this.ySpeed;
+             }*/
+            if (this.x < this.radius) {
+                if (this.lastX > this.x) {
+                    this.xSpeed = -this.xSpeed;
+                }
             }
-            if (this.y < this.radius || this.y > height - this.radius) {
-                this.ySpeed = -this.ySpeed;
+            if (this.x > width - this.radius) {
+                if (this.lastX < this.x) {
+                    this.xSpeed = -this.xSpeed;
+                }
             }
+
+            if (this.y < this.radius) {
+                if (this.lastY > this.y) {
+                    this.ySpeed = -this.ySpeed;
+                }
+            }
+
+            if (this.y > width - this.radius) {
+                if (this.lastY < this.y) {
+                    this.ySpeed = -this.ySpeed;
+                }
+            }
+            this.lastX = this.x;
+            this.lastY = this.y;
+
+            /*if (this.x < this.radius || this.x > width - this.radius) {
+
+             this.xSpeed = -this.xSpeed;
+
+             }
+             if (this.y < this.radius || this.y > height - this.radius) {
+
+             this.ySpeed = -this.ySpeed;
+             }*/
+
 
         },
 
@@ -156,6 +209,66 @@
         }
     };
 
+    snake.Position = function (x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+
+    function initPositions(w, h) {
+        var i = 0, j = 0;
+        var wDis = width / w;
+        var hDis = height / h;
+        for (i = 0; i < w; i++) {
+            for (j = 0; j < h; j++) {
+                positions.push(new snake.Position(Math.random() * (wDis - radius * 2) + i * (wDis + radius), Math.random() * (hDis - radius * 2) + (j * hDis + radius)));
+            }
+        }
+    }
+
+    function initRandomIndexs(nums) {
+        for (var i = 0; i < nums; i++) {
+            randomIndexs.push(i);
+        }
+    }
+
+    function getRandomIndex() {
+        var index = parseInt(Math.random() * randomIndexs.length);
+        var num = randomIndexs[index];
+        arrayRemove(randomIndexs, num);
+        return num;
+    }
+    function calLocation(circle, circle2) {
+
+        var xSpeed = circle.xSpeed;
+        var ySpeed = circle.ySpeed;
+
+        var ratio = xSpeed / ySpeed;
+
+        var yTemp = Math.pow(circle.radius + circle2.radius, 2) / (Math.pow(ratio, 2) + 1);
+        var ySpace = Math.sqrt(yTemp);
+        var xSpace = ySpace * ratio;
+
+        if (xSpeed > 0) {
+            xSpace = -Math.abs(xSpace);
+        } else {
+            xSpace = Math.abs(xSpace);
+        }
+
+        if (ySpeed > 0) {
+            ySpace = -Math.abs(ySpace);
+        } else {
+            ySpace = Math.abs(ySpace);
+        }
+        circle2.x = circle.x + xSpace;
+        circle2.y = circle.y + ySpace;
+        circle2.xSpeed = xSpeed;
+        circle2.ySpeed = ySpeed;
+
+        /*var x2 = circle2.x;
+         var y2 = circle2.y;*/
+
+    }
 
     function checkCollusion(circle, circle2, isSame) {
         var x1 = circle.x;
@@ -204,7 +317,10 @@
     function draw() {
 
         //if (countIndex++ > 4) {
+        var circle;
         context.clearRect(0, 0, width, height);
+
+
         for (var i = 0; i < circleArr.length; i++) {
             for (var j = 0; j < i; j++) {
                 checkCollusion(circleArr[i], circleArr[j], true);
@@ -212,23 +328,41 @@
             var circle = circleArr[i];
             //console.log(circle);
             //console.log(circleArr)
+            /*circle.move();
+             circle.draw();*/
+        }
+
+
+        for (var i = 0; i < catchCircleArr.length; i++) {
+            for (var j = 0; j < circleArr.length; j++) {
+                circle = circleArr[j];
+                if (checkCollusion(catchCircleArr[i], circle, false)) {
+
+                    arrayRemove(circleArr, circle);
+                    calLocation(catchCircleArr[catchCircleArr.length - 1], circle);
+                    catchCircleArr.push(circle);
+                }
+            }
+            /*var circle = catchCircleArr[i];
+             circle.move();
+             circle.draw();*/
+        }
+
+        for (var i = 0; i < circleArr.length; i++) {
+            circle = circleArr[i];
             circle.move();
             circle.draw();
         }
 
         for (var i = 0; i < catchCircleArr.length; i++) {
-            for (var j = 0; j < circleArr.length; j++) {
-                if(checkCollusion(catchCircleArr[i], circleArr[j], false)) {
-                    arrayRemove(circleArr, circleArr[j]);
-                }
-            }
-            var circle = catchCircleArr[i];
+            circle = catchCircleArr[i];
             circle.move();
             circle.draw();
         }
-        countIndex = 0;
+        //countIndex = 0;
         //}
     }
+
     function animate() {
         animateId = requestAnimationFrame(animate);
         draw();
@@ -236,16 +370,19 @@
 
     function initCircle() {
         for (var i = 0; i < 5; i++) {
-            var circle = new snake.CircleObj(21, textArr[i % 5], false, i + 1, context);
+            var circle = new snake.CircleObj(positions[getRandomIndex() + 1], 21, textArr[i % 5], false, i + 1, context);
             circleArr.push(circle);
         }
-        var circle = new snake.CircleObj(21, "", true, 0, context);
+        var circle = new snake.CircleObj(positions[0], 21, "", true, 0, context);
         catchCircleArr.push(circle);
     }
 
 
     initCanvasWH(canvas);
+    initPositions(3, 3);
+    initRandomIndexs(8);
     initCircle();
+
     animate();
     //drawCircle(i * 30, i * 30, 20, textArr[i], context);
     //drawCircle(30, 30, 20, "中", context);
