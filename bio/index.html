@@ -58,6 +58,12 @@
 
     window.addEventListener("mousemove", mousemove);
 
+    window.addEventListener("touchstart", mousedown);
+
+    window.addEventListener("touchend", mouseup);
+
+    window.addEventListener("touchmove", mousemove);
+
     function mousedown(e) {
         //console.log(e);
         var x1 = e.x;
