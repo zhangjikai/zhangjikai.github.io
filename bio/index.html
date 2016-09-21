@@ -5,12 +5,19 @@
     <!--<link rel="stylesheet" href="node_modules/mobi.css/dist/mobi.css">-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/mobi.css">
+    <!--<link rel="stylesheet" href="css/mobi.css">-->
     <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
         #canvas {
             display: block;
             border: 1px red solid;
-            margin: 0 auto;
+            /*margin: 0 auto;*/
+            width: 500px;
+            height: 500px;
         }
 
 
@@ -20,12 +27,12 @@
 <body>
 
 
-<div class="flex-center">
+<!--<div class="flex-center">
     <div class="container">
-        <canvas id="canvas" width="500" height="500"></canvas>
-    </div>
-</div>
 
+    </div>
+</div>-->
+<canvas id="canvas" width="500" height="500"></canvas>
 
 <script type="text/javascript">
 
@@ -35,14 +42,56 @@
     var pointColor = "#2E81CE";
     var pointRadius = 4;
     var rectColor = "#3E852E";
+    var bioX = 200;
+    var bioY = 285;
+    var isMove = false;
+    var moveDis = 100;
 
-
-    drawCoordinate(100, 400, 300, 300);
-    drawPoint(200, 300, 200, 400);
-    drawBio(200, 285);
+    draw();
     /*context.moveTo(10, 10);
      context.lineTo(150, 10);
      context.stroke();*/
+
+    window.addEventListener("mousedown", mousedown);
+
+    window.addEventListener("mouseup", mouseup);
+
+    window.addEventListener("mousemove", mousemove);
+
+    function mousedown(e) {
+        //console.log(e);
+        var x1 = e.x;
+        var y1 = e.y;
+        var dis = Math.pow(x1 - bioX, 2) + Math.pow(y1 - bioY, 2);
+        if (dis < moveDis) {
+            isMove = true;
+        }
+    }
+
+    function mouseup(e) {
+        isMove = false;
+    }
+
+    function mousemove(e) {
+        if (isMove) {
+            bioX = parseInt(e.x);
+            bioY = parseInt(e.y);
+
+            draw();
+        }
+
+        if (e.x > 500 || e.y > 500) {
+            isMove = false;
+            //console.log(11)
+        }
+    }
+
+    function draw() {
+        context.clearRect(0, 0, 500, 500);
+        drawCoordinate(100, 400, 300, 300);
+        drawPoint(200, 300, 200, 400);
+        drawBio(bioX, bioY);
+    }
 
     function drawBio(x, y) {
         var rectWidth = 20;
@@ -64,22 +113,24 @@
         context.strokeRect(basePointX, basePointY, rectWidth, rectHeight);
         context.strokeRect(basePointX - rectWidth * 2, basePointY - rectHeight, rectWidth, rectHeight);
         context.strokeRect(basePointX - rectWidth * 2, basePointY + rectHeight, rectWidth, rectHeight);
+        context.fillStyle = "#fff";
         context.beginPath();
         context.arc(basePointX + rectWidth * 2, basePointY - rectHeight / 2, rectHeight / 2, 0, 2 * Math.PI, true);
-        context.fillStyle = "#fff";
+        context.closePath();
+
         context.fill();
         context.stroke();
 
         context.beginPath()
         context.arc(basePointX + rectWidth * 2, basePointY + rectHeight / 2 * 3, rectHeight / 2, 0, 2 * Math.PI, true);
-        context.fillStyle = "#fff";
+        context.closePath();
+
         context.fill();
         context.stroke();
+        context.beginPath();
+        context.closePath();
 
 
-        //context.moveTo(basePointX + rectWidth * 2, basePointY + rectHeight);
-
-        context.stroke();
     }
 
     function drawPoint(x, y, x1, y1) {
