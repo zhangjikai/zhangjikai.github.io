@@ -1,0 +1,38 @@
+.location-img {
+    /*border-radius: 10px;
+    background: #fff;*/
+    cursor: pointer;
+
+}
+
+
+img {
+    max-width: 100%;
+}
+
+.BMap_pop img{
+    max-width: unset;
+}
+
+.bike-show {
+
+    padding: 0;
+}
+
+.bike-info {
+    font-family: "Microsoft Yahei";
+    font-size: 0.9em;
+    padding-left: 10px;
+}
+
+.bike-price {
+    font-family: "Microsoft Yahei";
+    font-size: 1.1em;
+    color: red;
+    padding-left: 10px;
+}
+
+.bike-img {
+    width: auto;
+    text-align: center;
+}
