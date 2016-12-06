@@ -6,7 +6,6 @@
 
         this._listeners = {};
         this.inBounds = false;
-        console.log(111);
 
     };
 
@@ -45,12 +44,20 @@
         },
 
         removeListener: function (type, listener) {
+            if (listener == null) {
+                if (this._listeners.hasOwnProperty(type)) {
+                    this._listeners[type] = [];
+                    cce.EventManager.removeTarget(type, this);
+                }
+            }
+
             if (this._listeners[type] instanceof Array) {
                 var listeners = this._listeners[type];
                 for (var i = 0, len = listeners.length; i < len; i++) {
                     if (listeners[i] === listener) {
                         listeners.splice(i, 1);
-                        cce.EventManager.removeTarget(type, this);
+                        if (listeners.length == 0)
+                            cce.EventManager.removeTarget(type, this);
                         break;
                     }
                 }

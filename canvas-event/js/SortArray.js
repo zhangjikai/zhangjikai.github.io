@@ -10,8 +10,6 @@
 
     cce.SortArray.prototype = {
 
-
-
         add: function (ele) {
             if (ele == null) {
                 return;
@@ -21,7 +19,7 @@
 
             for (i = 0, index = 0; i < this._data.length; i++) {
                 data = this._data[i];
-                result = ele.compareToKey(data);
+                result = ele.compareTo(data);
                 if (result == null) {
                     return;
                 }
@@ -39,6 +37,33 @@
             this._data[index] = ele;
         },
 
+        contains: function (ele) {
+
+            if (ele == null) {
+                return false;
+            }
+
+
+            var i, low, mid, high;
+            low = 0;
+            high = this._data.length - 1;
+            while (low <= high) {
+                mid = parseInt((low + high) / 2);
+
+                if (this._data[mid] == ele) {
+                    return true;
+                }
+
+                if (this._data[mid].compareTo(ele) < 0) {
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
+                }
+            }
+
+            return false;
+        },
+
         search: function (point) {
             var d;
             this.selectedElements.length = 0;
@@ -47,13 +72,11 @@
 
             for (var i = 0; i < this._data.length; i++) {
                 d = this._data[i];
-                if (d.compareToKey(point) > 0) {
-                    //console.log(d);
-                    //console.log(111);
+                if (d.comparePointX(point) > 0) {
                     break;
                 }
 
-                if (d.compareTo(point)) {
+                if (d.hasPoint(point)) {
                     this.selectedElements.push(d);
                 } else {
                     this.unSelectedElements.push(d);
@@ -64,7 +87,6 @@
                 d = this._data[i];
                 this.unSelectedElements.push(d);
             }
-            //return this.selected;
         },
 
         print: function () {
@@ -86,6 +108,8 @@
 
         reset: function () {
             this._data.length = 0;
+            this.selectedElements.length = 0;
+            this.unSelectedElements.length = 0;
         }
 
 
