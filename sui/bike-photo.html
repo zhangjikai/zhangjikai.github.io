@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>车子图片</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--<link rel="stylesheet" href="lib/sm.css">
+    <link rel="stylesheet" href="lib/sm-extend.css">-->
+
+    <link rel="stylesheet" href="lib/sui/sm.css">
+
+    <!--如果你用到了拓展包中的组件，还需要引用下面两个-->
+    <link rel="stylesheet" href="lib/sui/sm-extend.css">
+
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_92dv57g0w6gmygb9.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script type='text/javascript' src='lib/sui/zepto.js' charset='utf-8'></script>
+
+
+</head>
+<body>
+<div class="page-group">
+    <div id="page-photo" class="page page-current">
+
+        <header class="bar bar-nav custom-icon">
+            <a class="button button-link  pull-right " href="#" data-transition='slide-out'>
+                <span class="  color-gray">下一步</span>
+            </a>
+
+            <h1 class="title">选择车子照片</h1>
+        </header>
+        <div class="content native-scroll">
+
+            <!--<h4 class="center">仅需几步完善车子信息</h4>-->
+
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100 photo-outer">
+                        <input type="file" accept="image/*"  id="input-select" class="photo-select"/>
+                        <button class="photo-select-style">添加照片</button>
+                    </div>
+                </div>
+
+                <div class="row" id="bike-show">
+
+                </div>
+                <!--<input type="file" accept="video/*;capture=camcorder">
+                <input type="file" accept="audio/*;capture=microphone">
+                <input type="file" accept="image/*;capture=camera">直接调用相机（测试安卓可以，iphone还是有相册）
+                <input type="file" accept="image/*" />调用相机 图片或者相册
+                <input type="file" multiple accept="image/*" />调用相册-->
+
+
+            </div>
+
+
+            <!-- 这里是页面内容区 -->
+        </div>
+
+    </div>
+</div>
+<!--<script type='text/javascript' src='lib/zepto.js' charset='utf-8'></script>
+<script type='text/javascript' src='lib/sm.js' charset='utf-8'></script>
+<script type='text/javascript' src='lib/sm-extend.js' charset='utf-8'></script>-->
+
+
+<script type='text/javascript' src='lib/sui/sm.js' charset='utf-8'></script>
+<script type='text/javascript' src='lib/sui/sm-extend.js' charset='utf-8'></script>
+
+<script type="text/javascript">
+    $("#input-select").on("change", function (e) {
+
+        console.log(this.files);
+
+
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            //$("#img").attr("src",  e.target.result);
+            //console.log(e.target.result)
+            $("#bike-show").append("<div class='col-33'><img src='" + e.target.result + "'></div>");
+        };
+
+
+        reader.readAsDataURL(this.files[0]);
+
+        /*var reader = new FileReader();
+         reader.onload = function (e) {
+         console.log(this.result)
+         };*/
+
+        //console.log(this.files)
+
+        /*for(var i = 0; i < this.files.length; i++) {
+         reader.readAsDataURL(this.files[i]);
+         }*/
+
+    })
+
+</script>
+
+</body>
+</html>
