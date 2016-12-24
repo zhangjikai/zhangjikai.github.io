@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AR 红包</title>
+    <style type="text/css">
+        #upload {
+            width: 600px;
+            height: 200px;
+            margin: 0 auto;
+            /*border: 1px solid red;*/
+            position: relative;
+            cursor: pointer;
+        }
+
+        #select-file {
+            border: 1px solid;
+            width: 560px;
+            height: 180px;
+            margin-left: 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .select-file-style {
+            background: #F5F7FA;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 200px;
+            border: 8px dashed #ddd;
+            pointer-events: none;
+            color: #AAB2BD;
+            font-size: 2em;
+            font-family: "Microsoft YaHei", "Tahoma", arial;
+        }
+
+        #canvas {
+            display: block;
+
+            margin: 10px auto;
+            /*border: 1px solid red;*/
+        }
+    </style>
+</head>
+<body>
+
+<div id="upload">
+
+    <input type="file" accept="image/*" id="select-file">
+    <button class="select-file-style" id="drop">选择或者拖拽图片到此</button>
+</div>
+<div>
+    <canvas width="600" height="600" id="canvas"></canvas>
+</div>
+
+<script type="text/javascript" src="js/index.js"></script>
+
+<script type="text/javascript">
+    var selectFile = document.getElementById('select-file');
+    var drop = document.getElementById("drop");
+
+    init();
+
+    function dragEnter(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        drop.style.borderColor = "#5cb8b9";
+    }
+
+    function dragLeave(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        drop.style.borderColor = "#ddd";
+    }
+
+    function fileSelect(e) {
+        /*console.log(e);*/
+        e.stopPropagation();
+        e.preventDefault();
+
+        drop.style.borderColor = "#ddd";
+        var reader = new FileReader();
+        reader.readAsDataURL(e.dataTransfer.files[0]);
+        reader.onload = function (e) {
+            var image = new Image();
+            image.src = e.target.result;
+            transfer(image);
+
+        }
+
+    }
+
+    function selectChange(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        drop.style.borderColor = "#ddd";
+        var reader = new FileReader();
+        reader.readAsDataURL(this.files[0]);
+        reader.onload = function (e) {
+            var image = new Image();
+            image.src = e.target.result;
+            transfer(image);
+
+        }
+    }
+    selectFile.addEventListener("dragenter", dragEnter, false);
+    selectFile.addEventListener("dragleave", dragLeave, false);
+    selectFile.addEventListener('drop', fileSelect, false);
+    selectFile.addEventListener("change", selectChange, false);
+</script>
+</body>
+</html>
