@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <style type="text/css">
+        #upload {
+            width: 600px;
+            height: 200px;
+            margin: 0 auto;
+            /*border: 1px solid red;*/
+            position: relative;
+            cursor: pointer;
+        }
+
+        #select-file {
+            border: 1px solid;
+            width: 560px;
+            height: 180px;
+            margin-left: 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .select-file-style {
+            background: #F5F7FA;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 200px;
+            border: 8px dashed #ddd;
+            pointer-events: none;
+            color: #AAB2BD;
+            font-size: 2em;
+            font-family: "Microsoft YaHei", "Tahoma", arial;
+        }
+
+        #canvas {
+            display: block;
+
+            margin: 10px auto;
+            /*border: 1px solid red;*/
+        }
+    </style>
+</head>
+<body>
+
+<div id="upload">
+
+    <input type="file" accept="image/*" id="select-file">
+    <button class="select-file-style" id="drop">选择或者拖拽图片到此</button>
+</div>
+<div>
+    <canvas width="600" height="600" id="canvas"></canvas>
+</div>
+
+<!--
+<canvas width="600" height="600" id="canvas"></canvas>
+<button id="btn"></button>
+-->
+
+<!--<img src="images/02.png" style="display: none;" id="image">-->
+<script type="text/javascript" src="js/deltae.global.min.js"></script>
+<script type="text/javascript" src="js/stackblur.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+<script type="text/javascript">
+
+    init();
+//    var img = document.getElementById("image")
+//
+//    function transfer2(image) {
+//
+//
+//        var width = image.width;
+//        var height = image.height;
+//        context.clearRect(0, 0, canvas.width, canvas.height);
+//        context.drawImage(image, 0, 0, width, height);
+//
+//
+//        var imageData = context.getImageData(0, 0, width, height);
+//
+//        var start, start2;
+//
+//        var wNum = imageData.width;
+//        var hNum = imageData.height;
+//
+//        var data = imageData.data;
+//        var index = 0;
+//        //var rgb = [44, 50, 62];
+//        //var rgb = [53, 50, 55];
+//        var rgb = [36, 60, 44];
+//        var rgb_2 = [55, 52, 59];
+//        var rgb_3 = [74, 75, 75];
+//        var rgb_4 = [66, 47, 39];
+//        var rgb_5 = [47, 47, 47];
+//        var rgb_6 = [141, 140, 136];
+//        var rgb_7 = [63, 63, 63];
+//        var rgb_8 = [39, 47, 61];
+//        var rgb2 = [];
+//        var similarCount = 0;
+//        var inStart = 0;
+//
+//        var interval = 8;
+//
+//        for (var i = 0; i < hNum; i++) {
+//
+//            start = 4 * wNum * i;
+//            start2 = 4 * wNum * (i + interval);
+//            similarCount = 0;
+//
+//            for (var j = 0; j < 1; j++) {
+//                inStart = start + j * 4;
+//                rgb2.length = 0;
+//                rgb2[0] = data[inStart];
+//                rgb2[1] = data[inStart + 1];
+//                rgb2[2] = data[inStart + 2];
+//
+//                console.log(rgb2);
+//                /*if (similar3(rgb, rgb2)) {
+//                    similarCount++;
+//                }*/
+//            }
+//
+//            if (similarCount > (wNum / 4 * 3)) {
+//                for (j = 0; j < wNum * 4; j++) {
+//                    //data[start + j] = data[start2 + j];
+//                    data[start + j] = 0xf;
+//                }
+//            }
+//        }
+//
+//        //for (i = 0; i < hNum; i++) {
+//        //
+//        //    start = 4 * wNum * i;
+//        //    if (i < interval) {
+//        //        start2 = 4 * wNum * (i + interval);
+//        //    } else {
+//        //        start2 = 4 * wNum * (i - interval);
+//        //    }
+//        //
+//        //    similarCount = 0;
+//        //
+//        //    for (j = 0; j < wNum; j++) {
+//        //        inStart = start + j * 4;
+//        //        rgb2.length = 0;
+//        //        rgb2[0] = data[inStart];
+//        //        rgb2[1] = data[inStart + 1];
+//        //        rgb2[2] = data[inStart + 2];
+//        //        if (similar2(rgb, rgb2) || similar2(rgb_2, rgb2) || similar2(rgb_3, rgb2)) {
+//        //            similarCount++;
+//        //        }
+//        //    }
+//        //
+//        //    if (similarCount > (wNum / 4 * 3)) {
+//        //        for (j = 0; j < wNum * 4; j++) {
+//        //            data[start + j] = data[start2 + j];
+//        //        }
+//        //    }
+//        //}
+//
+//
+//
+//
+//        context.clearRect(0, 0, canvas.width, canvas.height);
+//        context.putImageData(imageData, 0, 0);
+//        //StackBlur.canvasRGBA(canvas, 0, 0, width, height,8);
+//    }
+//
+//    transfer2(img);
+
+
+    var selectFile = document.getElementById('select-file');
+    var drop = document.getElementById("drop");
+
+    init();
+
+    function dragEnter(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        drop.style.borderColor = "#5cb8b9";
+    }
+
+    function dragLeave(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        drop.style.borderColor = "#ddd";
+    }
+
+    function fileSelect(e) {
+        /*console.log(e);*/
+        e.stopPropagation();
+        e.preventDefault();
+
+        drop.style.borderColor = "#ddd";
+        var reader = new FileReader();
+        reader.readAsDataURL(e.dataTransfer.files[0]);
+        reader.onload = function (e) {
+            var image = new Image();
+            image.src = e.target.result;
+            transfer(image);
+
+        }
+
+    }
+
+    function selectChange(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        drop.style.borderColor = "#ddd";
+        var reader = new FileReader();
+        reader.readAsDataURL(this.files[0]);
+        reader.onload = function (e) {
+            var image = new Image();
+            image.src = e.target.result;
+            transfer(image);
+
+        }
+    }
+    selectFile.addEventListener("dragenter", dragEnter, false);
+    selectFile.addEventListener("dragleave", dragLeave, false);
+    selectFile.addEventListener('drop', fileSelect, false);
+    selectFile.addEventListener("change", selectChange, false);
+</script>
+</body>
+</html>

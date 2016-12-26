@@ -36,6 +36,10 @@ function transfer(image) {
     var rgb_2 = [55, 52, 59];
     var rgb_3 = [74, 75, 75];
     var rgb_4 = [116, 118, 90];
+    var rgb_5 = [47, 47, 47];
+    var rgb_6 = [141, 140, 136];
+    var rgb_7 = [63, 63, 63];
+    var rgb_8 = [39, 47, 61];
     var rgb2 = [];
     var similarCount = 0;
     var inStart = 0;
@@ -53,7 +57,7 @@ function transfer(image) {
             rgb2[0] = data[inStart];
             rgb2[1] = data[inStart + 1];
             rgb2[2] = data[inStart + 2];
-            if (similar(rgb, rgb2) || similar(rgb_2, rgb2) || similar(rgb_3, rgb2) || similar(rgb_4, rgb2)) {
+            if (similar(rgb, rgb2) || similar(rgb_2, rgb2) || similar(rgb_3, rgb2)) {
                 similarCount++;
             }
         }
