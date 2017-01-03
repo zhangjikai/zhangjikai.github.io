@@ -189,19 +189,14 @@
     <hr>
     <p>Underscores</p>
     <h2 id="mathjax"><a href="#mathjax" class="anchor"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MathJax</h2>
-    <p>Inline math equations go in like so: <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-81"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-82">ω</span><span class="MJXp-mo" id="MJXp-Span-83" style="margin-left: 0.333em; margin-right: 0.333em;">=</span><span
-            class="MJXp-mi MJXp-italic" id="MJXp-Span-84">d</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-85">ϕ</span><span class="MJXp-mrow" id="MJXp-Span-86"><span class="MJXp-mo" id="MJXp-Span-87" style="margin-left: 0.111em; margin-right: 0.111em;">/</span></span><span
-            class="MJXp-mi MJXp-italic" id="MJXp-Span-88">d</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-89">t</span></span>
-        </span>
-        <script type="math/tex" id="MathJax-Element-9">\omega = d\phi / dt</script>. Display math should get its own line and be put in in double-dollarsigns:</p>
-    <p><span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math MJXp-display" id="MJXp-Span-90"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-91">I</span><span class="MJXp-mo" id="MJXp-Span-92" style="margin-left: 0.333em; margin-right: 0.333em;">=</span><span
-            class="MJXp-mo" id="MJXp-Span-93" style="margin-left: 0em; margin-right: 0.111em;"><span class="MJXp-largeop MJXp-int">∫</span></span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-94">ρ</span><span class="MJXp-msubsup" id="MJXp-Span-95"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-96" style="margin-right: 0.05em;">R</span><span
-            class="MJXp-mrow MJXp-script" id="MJXp-Span-97" style="vertical-align: 0.5em;"><span class="MJXp-mn" id="MJXp-Span-98">2</span></span>
-        </span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-99">d</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-100">V</span></span>
-        </span>
-        <script type="math/tex; mode=display" id="MathJax-Element-10">I = \int \rho R^{2} dV</script>
-    </p>
+    <p>Inline math equations go in like so: $\omega = d\phi / dt$. Display math should get its own line and be put in in double-dollarsigns:</p>
+    <p>$$I = \int \rho R^{2} dV$$</p>
     <p>And note that you can backslash-escape any punctuation characters which you wish to be displayed literally, ex.: `foo`, *bar*, etc.</p>
+    <p>$$ \begin{matrix} 1 &amp; x &amp; x^2 \\ 1 &amp; y &amp; y^2 \\ 1 &amp; z &amp; z^2 \\ \end{matrix} $$
+    </p>
+    <p>\begin{align} \sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\ &amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\ &amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\ &amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\ &amp; \approx
+        \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right) \end{align}
+    </p>
     <h2 id="todo"><a href="#todo" class="anchor"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Todo</h2>
     <ul>
         <li style="list-style: none"><input type="checkbox" class="task-list-item-checkbox" disabled="" checked=""> 完成</li>
@@ -221,13 +216,28 @@
             <img align="absmiddle" alt=":blush:" class="emoji" src="http://cdn.bootcss.com/emojify.js/1.0/images/basic/blush.png"
                 title=":blush:"></img> <img align="absmiddle" alt=":kissing_smiling_eyes:" class="emoji" src="http://cdn.bootcss.com/emojify.js/1.0/images/basic/kissing_smiling_eyes.png" title=":kissing_smiling_eyes:"></img>
     </p>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
-    <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="http://markdown.zhangjikai.com/dist/js/backtotop.min.js"></script>
-    <script type="text/javascript">
-        backToTop.init()
-    </script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, TeX: {equationNumbers: {autoNumber: ["AMS"],useLabelIds: true}},"HTML-CSS": {linebreaks: {automatic: true}},SVG: {linebreaks: {automatic: true}}});</script>
+    <script type="text/javascript"
+        src="http://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://markdown.zhangjikai.com/dist/js/backtotop.min.js"></script>
+        <script type="text/javascript">
+            backToTop.init()
+        </script>
+        <div class="ds-thread" data-thread-key="sample" data-title="Markdown Sample" data-url="/markdown/sample.html"></div>
+        <script type="text/javascript">
+            var duoshuoQuery = {
+                short_name: "zhangjkblog"
+            };
+            (function() {
+                var ds = document.createElement("script");
+                ds.type = "text/javascript";
+                ds.async = true;
+                ds.src = (document.location.protocol == "https:" ? "https:" : "http:") + "//static.duoshuo.com/embed.js";
+                ds.charset = "UTF-8";
+                (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(ds);
+            })();
+        </script>
 </body>
 
 </html>
