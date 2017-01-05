@@ -42,6 +42,7 @@
         <li><a href="#todo">Todo</a></li>
         <li><a href="#sequence-diagrams">Sequence Diagrams</a></li>
         <li><a href="#emoji">Emoji</a></li>
+        <li><a href="#echarts">ECharts</a></li>
     </ul>
     <h2 id="heading"><a href="#heading" class="anchor"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Heading</h2>
     <h3
@@ -216,6 +217,10 @@
             <img align="absmiddle" alt=":blush:" class="emoji" src="http://cdn.bootcss.com/emojify.js/1.0/images/basic/blush.png"
                 title=":blush:"></img> <img align="absmiddle" alt=":kissing_smiling_eyes:" class="emoji" src="http://cdn.bootcss.com/emojify.js/1.0/images/basic/kissing_smiling_eyes.png" title=":kissing_smiling_eyes:"></img>
     </p>
+    <h2 id="echarts"><a href="#echarts" class="anchor"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ECharts</h2>
+    <div
+        id="echarts-1" style="width: 100%;height:400px;"></div>
+    <div id="echarts-2" style="width: 100%;height:400px;"></div>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, TeX: {equationNumbers: {autoNumber: ["AMS"],useLabelIds: true}},"HTML-CSS": {linebreaks: {automatic: true}},SVG: {linebreaks: {automatic: true}}});</script>
     <script type="text/javascript"
         src="http://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -237,6 +242,192 @@
                 ds.charset = "UTF-8";
                 (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(ds);
             })();
+        </script><br />
+        <script src="http://cdn.bootcss.com/echarts/3.3.2/echarts.min.js"></script>
+        <script src="http://markdown.zhangjikai.com/dist/js/echarts-theme/macarons.min.js"></script>
+        <script src="http://markdown.zhangjikai.com/dist/js/echarts-theme/dark.min.js"></script><br />
+        <script type="text/javascript">
+            var chart0 = echarts.init(document.getElementById("echarts-1"), "macarons");
+            var option0 = {
+                theme: "macarons",
+                title: {
+                    text: '某地区蒸发量和降水量',
+                    subtext: '纯属虚构'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['蒸发量', '降水量']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: {
+                            show: true
+                        },
+                        dataView: {
+                            show: true,
+                            readOnly: false
+                        },
+                        magicType: {
+                            show: true,
+                            type: ['line', 'bar']
+                        },
+                        restore: {
+                            show: true
+                        },
+                        saveAsImage: {
+                            show: true
+                        }
+                    }
+                },
+                calculable: true,
+                xAxis: [{
+                    type: 'category',
+                    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                }],
+                yAxis: [{
+                    type: 'value'
+                }],
+                series: [{
+                        name: '蒸发量',
+                        type: 'bar',
+                        data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                        markPoint: {
+                            data: [{
+                                    type: 'max',
+                                    name: '最大值'
+                                },
+                                {
+                                    type: 'min',
+                                    name: '最小值'
+                                }
+                            ]
+                        },
+                        markLine: {
+                            data: [{
+                                type: 'average',
+                                name: '平均值'
+                            }]
+                        }
+                    },
+                    {
+                        name: '降水量',
+                        type: 'bar',
+                        data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+                        markPoint: {
+                            data: [{
+                                    name: '年最高',
+                                    value: 182.2,
+                                    xAxis: 7,
+                                    yAxis: 183,
+                                    symbolSize: 18
+                                },
+                                {
+                                    name: '年最低',
+                                    value: 2.3,
+                                    xAxis: 11,
+                                    yAxis: 3
+                                }
+                            ]
+                        },
+                        markLine: {
+                            data: [{
+                                type: 'average',
+                                name: '平均值'
+                            }]
+                        }
+                    }
+                ]
+            };
+            chart0.setOption(option0);
+            var chart1 = echarts.init(document.getElementById("echarts-2"), "dark");
+            var option1 = {
+                theme: "dark",
+                title: {
+                    text: '某楼盘销售情况',
+                    subtext: '纯属虚构'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['意向', '预购', '成交']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: {
+                            show: true
+                        },
+                        dataView: {
+                            show: true,
+                            readOnly: false
+                        },
+                        magicType: {
+                            show: true,
+                            type: ['line', 'bar', 'stack', 'tiled']
+                        },
+                        restore: {
+                            show: true
+                        },
+                        saveAsImage: {
+                            show: true
+                        }
+                    }
+                },
+                calculable: true,
+                xAxis: [{
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                }],
+                yAxis: [{
+                    type: 'value'
+                }],
+                series: [{
+                        name: '成交',
+                        type: 'line',
+                        smooth: true,
+                        itemStyle: {
+                            normal: {
+                                areaStyle: {
+                                    type: 'default'
+                                }
+                            }
+                        },
+                        data: [10, 12, 21, 54, 260, 830, 710]
+                    },
+                    {
+                        name: '预购',
+                        type: 'line',
+                        smooth: true,
+                        itemStyle: {
+                            normal: {
+                                areaStyle: {
+                                    type: 'default'
+                                }
+                            }
+                        },
+                        data: [30, 182, 434, 791, 390, 30, 10]
+                    },
+                    {
+                        name: '意向',
+                        type: 'line',
+                        smooth: true,
+                        itemStyle: {
+                            normal: {
+                                areaStyle: {
+                                    type: 'default'
+                                }
+                            }
+                        },
+                        data: [1320, 1132, 601, 234, 120, 90, 20]
+                    }
+                ]
+            };
+            chart1.setOption(option1);
         </script>
 </body>
 
