@@ -40,7 +40,7 @@
 
             au = document.getElementById('myaudio');
             var speed = $("#readSpeed").val();
-            au.src = "http://tts.baidu.com/text2audio?lan=zh&pid=101&ie=UTF-8&text=" + encodeURI(encodeURI(text)) + "&spd=" + speed;
+            au.src = "https://tts.baidu.com/text2audio?lan=zh&pid=101&ie=UTF-8&text=" + encodeURI(encodeURI(text)) + "&spd=" + speed;
             au.preload = "preload";
             au.load();
 
