@@ -112,10 +112,10 @@ hw.load = function() {
     hw.show(hw.loadingDiv);
     hw.show(hw.hwDiv);
     if (hw.isIE()) {
-        hw.hwDiv.innerHTML = '<object width="304" height="239" align="middle" id="hwflash" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"><param name="wmode" value="Opaque"><param value="always" name="allowscriptaccess"><param value="http://www.baidu.com/hw/main.swf" name="movie"></object>'
+        hw.hwDiv.innerHTML = '<object width="304" height="239" align="middle" id="hwflash" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"><param name="wmode" value="Opaque"><param value="always" name="allowscriptaccess"><param value="https://www.baidu.com/hw/main.swf" name="movie"></object>'
     } else {
         var A = /Chrome/i.test(navigator.userAgent) ? ' wmode="window" ' : ' wmode="Opaque" ';
-        hw.hwDiv.innerHTML = '<embed width="304" height="239" align="middle" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" name="hwflash" src="http://www.baidu.com/hw/main.swf" ' + A + ' allowscriptaccess="always" ver="9.0.0">'
+        hw.hwDiv.innerHTML = '<embed width="304" height="239" align="middle" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" name="hwflash" src="https://www.baidu.com/hw/main.swf" ' + A + ' allowscriptaccess="always" ver="9.0.0">'
     }
 };
 hw.getMovie = function(A) {
