@@ -901,3 +901,16 @@ body.is-ie #wrapper {
     font-size: 50%;
     position: absolute;
 }
+
+ul.icons .custom-link{
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    text-indent: 0;
+    border: none;
+    font-family:Georgia, Helvetica, serif ;
+    letter-spacing: 1px;
+    line-height: 2em;
+    text-decoration: underline;
+    /*border-bottom: 1px solid green;*/
+}
